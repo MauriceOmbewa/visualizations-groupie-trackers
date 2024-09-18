@@ -66,10 +66,6 @@ header nav a {
     font-weight: 400;
 }
 
-header nav a:hover {
-    text-decoration: underline;
-}
-
 .hero h1 {
     position: absolute;
     top: 20%;
@@ -194,6 +190,10 @@ section.hero {
 .footer a i {
     font-size: 18px;
     color: #adb5bd;
+}
+
+.footer a:hover i {
+    color: #fca311;
 }
 /* Main Content */
 main {
@@ -531,6 +531,21 @@ main {
         -4px 0 13px rgba(0, 225, 255, 0.795), /* Left glare */
         4px 0 13px rgba(0, 225, 255, 0.795),  /* Right glare */
         0 6px 13px rgba(0, 225, 255, 0.795);  /* top glare */ 
+}
+
+/* Ensure consistent button styles */
+button, .close-button, .nav-links a {
+    padding: 10px;
+    /* background-color: #fca311; Consistent color */
+    color: #fca311;
+    border: 1px solid#00b4d8;
+    border-radius: 15px;
+    cursor: pointer;
+}
+button:hover, .close-button:hover, .nav-links a:hover {
+    background-color: #fca311;
+    color: #fff;
+    transition: 2s;
 }
 
 .close-button {
