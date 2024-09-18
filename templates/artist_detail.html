@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/styles2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>{{.Artist.Name}}</title>
+</head>
+<body>
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="overlay">
+            <div class="artist-details">
+                <img src="{{.Artist.Image}}" alt="{{.Artist.Name}}">
+                <h1 class="artist-name">{{.Artist.Name}}</h1>
+                <p class="creation-date"><span>Creation Date:</span> {{.Artist.CreationDate}}</p>
+                <p class="first-album"><span>First Album:</span> {{.Artist.FirstAlbum}}</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artist Bio -->
+    <section class="artist-bio">
+        <h2>About the Artist</h2>
+        <p>
+            Welcome to {{.Artist.Name}}'s official page! Since {{.Artist.CreationDate}}, {{.Artist.Name}} has captivated audiences worldwide with their distinctive sound blending Soul, HipHop, and Country. 
+            Starting their journey back in the day, they achieved early success with their first album that debuted in {{.Artist.FirstAlbum}} and its number one hit single for 2 months on Billboard. 
+            Known for their innovative style and emotional lyrics, {{.Artist.Name}} has earned accolades including Grammy and Oscars. 
+            Their electrifying live performances at venues like Detroit, New York, London showcase their exceptional talent. 
+            Currently, {{.Artist.Name}} is working on new projects and an upcoming tour. Stay updated on their latest music, news, and tour dates here and follow {{.Artist.Name}} on their Socials for more updates.
+        </p>
+    </section>
+
+    <!-- Albums & Members -->
+    <section class="album-container">
+        <div class="albums-members">
+            <div class="albums">
+                <img src="/static/images/record1.svg" alt="record image">
+                <p><strong><span>First Album:</span></strong> {{.Artist.FirstAlbum}}</p>
+            </div>
+            <div class="members">
+                <h2>{{.Artist.Name}} Members</h2>
+                <p><strong><span>Members:</span></strong> {{Join .Artist.Members ", "}}</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Dates & Locations -->
+    <section class="tour-dates-locations-container">
+        <div class="tour-dates-locations">
+            <div class="tour-dates">
+                <h2>Tour Dates</h2>
+                <ul>
+                    {{range .Dates.Dates}}
+                    <li>{{.}}</li>
+                    {{end}}
+                </ul>
+            </div>
+            <div class="locations">
+                <h2>Concert Locations</h2>
+                <ul>
+                    {{range .Locations.Locations}}
+                    <li>{{.}}</li>
+                    {{end}}
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Relations -->
+    <section class="relations">
+        <div class="relations-table">
+            <h2>Locations & Dates Relations</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Locations</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{range $date, $locations := .Relations.DatesLocations}}
+                    <tr>
+                        <td>{{$date}}</td>
+                        <td>{{Join $locations ", "}}</td>
+                    </tr>
+                    {{end}}
+                </tbody>
+            </table>
+        </div>
+        <div class="call-to-action-btn">
+            <a href="/artists">Find more artists</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer">
+        <h1>G<span>r</span>o<span>u</span>p<span>i</span>e <span>T</span>r<span>a</span>c<span>k</span>e<span>r</span>s</h1>
+        <p>&copy; 2024 Groupie Trackers. All rights reserved.</p>
+        <p>Follow us on:
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+        </p>
+    </div>
+
+    <script src="/static/js/scripts.js"></script>
+</body>
+</html>

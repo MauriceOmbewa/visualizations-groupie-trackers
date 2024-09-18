@@ -1,0 +1,1390 @@
+/* General Styles */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dancing+Script:wght@400..700&family=Fredericka+the+Great&family=Jacquard+12&family=Pacifico&family=Playwrite+HR:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rock+Salt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
+body {
+    font-family: "poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #adb5bd;
+    /* background: linear-gradient(to right, #1f0021, #751006); */
+    background: #0d1b2a;
+}
+h1 {
+    color: #00b4d8;
+}
+
+h1 span {
+    color: #fca311;
+}
+
+/* Header and Navigation */
+header {
+    background: rgba(56, 56, 56, 0.233);
+    color: #adb5bd;
+    padding: 15px 200px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 100%;
+    margin: auto;
+}
+
+
+header h1, .footer h1 {
+    margin: 0;
+    font-family: "Jacquard 12", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    color: #00b4d8;
+    font-size: 36px;
+    z-index: 1;
+}
+
+header h1 span, .footer h1 span {
+    color: #fca311;
+    font-family: "Jacquard 12", system-ui;
+}
+
+header nav {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    z-index: 1;
+}
+
+header nav a {
+    color: #adb5bd;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+header nav a:hover {
+    text-decoration: underline;
+}
+
+.hero h1 {
+    position: absolute;
+    top: 20%;
+    font-size: 130px;
+    font-family: "Kaushan Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.hero img {
+    height: 600px;
+
+}
+
+section.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+/* Slider Styles */
+.slider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    z-index: 10; /* Ensure it stays on top of other content */
+}
+
+.slide-track {
+    display: flex;
+    width: calc(100% * 3); /* Make sure there is enough space for all slides */
+    animation: scroll 60s linear infinite; /* Control speed */
+}
+
+.slide-item {
+    flex: 1 1 40%; /* Each item takes 25% of the slider width, so 4 items fit */
+    box-sizing: border-box;
+    padding: 10px;
+    background: #fca311;
+    color: #0d1b2a;
+    text-align: start;
+    font-size: 14px;
+    border-right: 2px solid #fff; /* Separator between items */
+}
+
+.slide-item span {
+    margin-left: 40px;
+}
+
+.slide-item.arrow-up i {
+    background-color: #138808;
+    padding: 8px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 10px;
+    margin-right: 10px;
+}
+
+.slide-item.arrow-down i{
+    background-color: #CE2029;
+    padding: 8px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 10px;
+    margin-right: 10px;
+}
+/* socials */
+.socials-container {
+    position: fixed;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    z-index: 1000;
+}
+
+.socials-container .socials {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.socials a {
+    display: block;
+    margin: 10px 0;
+    font-size: 18px;
+    padding: 15px 20px;
+    border: 1px solid #00b4d8;
+    border-radius: 50%;
+    text-decoration: none;
+    color: #fca311;
+}
+
+.socials a:hover {
+    background-color: #fca311;
+    color: #fff;
+    transition: 2s;
+
+}
+
+/* Animation for smooth sliding */
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+.footer {
+    padding: 20px 200px;
+    background: rgba(56, 56, 56, 0.233);
+    color: #adb5bd;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.footer a i {
+    font-size: 18px;
+    color: #adb5bd;
+}
+/* Main Content */
+main {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Cards for Artists */
+#artists-container, #locations-container, #dates-container, #relations-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+#artists-container a {
+    text-decoration: none;
+    list-style: none;
+}
+
+/* card 1 example */
+.card {
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 280px;  /* Default width increased by 40px */
+    height: 280px; /* Default height increased by 40px */
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+}
+.card-img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px 10px 0 0;
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    padding-block: 10px;
+    text-align: center;
+}
+
+.card-overlay h3 {
+    color: #fca311;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 225, 255, 0.795); /* Glaring bluish shadow on hover */
+}
+
+.card h3:hover {
+    transform: scale(1.1);
+    color: rgba(0, 225, 255, 0.795);
+}
+
+#content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#content h2 {
+    font-size: 45px;
+    color: #00b4d8;
+    font-family: "Rock Salt", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#content span {
+    color: #adb5bd;
+    font-size: 26px;
+    font-family: "Poppins", system-ui;
+    font-weight: 300;
+    font-style: normal;
+}
+
+#content .call-to-action {
+    margin-top: 50px;
+}
+
+#content .call-to-action a{
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 25px;
+    letter-spacing: .6em;
+    text-transform: capitalize;
+    background-color: #778da9;
+}
+
+#content .call-to-action a:hover {
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background-color: transparent;
+    transition: 2s;
+}
+
+.err-msg p {
+    color: #adb5bd;
+    font-size: 25px;
+}
+
+.hero-banner {
+    background: url('/static/images/artist-detail-banner2.jpg');
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.artist-details {
+    color: #fca311;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    margin-top: 20px;
+}
+
+.artist-details h1 {
+    font-family: "Rock Salt", cursive;
+    color: #00b4d8;
+    padding-block: 0px;
+}
+
+.artist-details img {
+    border-radius: 50%;
+    /* margin-bottom: 15px; */
+    width: 150px;
+    height: 150px;
+}
+
+.artist-details span {
+    color: #00b4d8;
+    font-weight: bold;
+}
+
+
+.artist-name {
+    font-size: 2rem;
+    margin: 10px 0;
+}
+
+.artist-bio {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #333;
+    color: #adb5bd;
+}
+
+.artist-bio h2, .members h2, .tour-dates-locations-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #00b4d8;
+}
+
+.album-container, .tour-dates-locations-container, .relations {
+    width: auto;
+    padding: 20px;
+    background-color: #333;
+    margin-top: 20px;
+    /* border-top: 1px solid #ddd; */
+}
+
+.album-container .albums-members {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.tour-dates-locations {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.album-container .albums, .album-container .members, .tour-dates-locations .tour-dates, .tour-dates-locations .locations {
+    flex: 1;
+    padding: 10px;
+}
+
+.albums-members p {
+    color: #fca311;
+}
+
+.albums-members span {
+    color: #00b4d8;
+    font-weight: bold;
+}
+
+.relations-table h2 {
+    color: #00b4d8;
+}
+
+.relations-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.relations-table th, .relations-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.relations-table th {
+    color: #00b4d8;
+}
+
+.call-to-action-btn {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.call-to-action-btn a {
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #fca311;
+    border-radius: 25px;
+    letter-spacing: .6em;
+    text-transform: capitalize;
+    background-color: transparent;
+    border: 1px solid #00b4d8;
+}
+
+.call-to-action-btn a:hover {
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background-color: #fca311;
+    transition: 2s;
+    color: #fff;
+}
+
+.popup-content .footer {
+    background-color: #333;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+} 
+
+/* search-bar */
+#search-bar {
+    padding: 10px;
+    border: 1px solid #adb5bd;;
+    border-radius: 25px;
+    width: 230px;
+    background: transparent;
+    color: #fff;
+}
+
+#search-results {
+    position: absolute;
+    border: 1px solid #adb5bd;
+    max-height: 200px;
+    overflow-y: auto;
+    width: 223px;
+    z-index: 1000;
+    margin-left: 15px;
+    border-radius: 6px;
+    color: #fff;
+}
+
+.search-result-item {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.search-result-item:hover {
+    background-color: #ddd;
+    color: #000;
+}
+
+.call-to-action-err-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.call-to-action-err-btn a {
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 25px;
+    letter-spacing: .6em;
+    text-transform: capitalize;
+    background-color: #778da9;
+}
+    
+.call-to-action-err-btn a:hover {
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    background-color: transparent;
+    transition: 2s;
+}
+/* POP-UP FEATURE */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background: #1b263b;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 1000px;
+    max-height: 90%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    position: relative;
+    box-shadow: 
+        0 18px 25px rgba(0, 225, 255, 0.795),  /* Bottom shadow, more concentrated */
+        -4px 0 13px rgba(0, 225, 255, 0.795), /* Left glare */
+        4px 0 13px rgba(0, 225, 255, 0.795),  /* Right glare */
+        0 6px 13px rgba(0, 225, 255, 0.795);  /* top glare */ 
+}
+
+.close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 55px;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.hamburger, .search-icon {
+    display: none;
+}
+
+@media (max-width: 375px)and (orientation: portrait){
+    /* Header and Navigation */
+    header {
+        background: rgba(56, 56, 56, 0.233);
+        color: #adb5bd;
+        padding: 15px 200px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 100%;
+        margin-right: 0%;
+        padding-inline: 5px;
+    }
+    header h1, .footer h1 {
+        /* margin: 0; */
+        font-family: "Jacquard 12", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        color: #00b4d8;
+        font-size: 24px;
+        z-index: 1;
+        margin-inline: 5px;
+    }
+
+
+    input#search-bar {
+        display: none;
+    }
+
+    #search-results {
+        display: none;
+    }
+
+    .hero h1 {
+        position: absolute;
+        top: 13%;
+        font-size: 45px;
+        font-family: "Kaushan Script", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+    
+    .hero img {
+        max-width: 100%;
+        height: auto;
+        top: 33%;
+        position: absolute;
+    
+    }
+    .socials-container {
+        position: fixed;
+        margin-inline: 17px;
+        top: 80%;
+        /* right: 10px; */
+        transform: translateY(-50%);
+        z-index: 1000;
+    }
+    
+    .socials-container .socials {
+        display: flex;
+        /* flex-direction: column; */
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .socials a {
+        top: 30%;
+        display: block;
+        margin: 10px 0;
+        font-size: 15px;
+        margin-inline: 10px;
+        padding: 15px 20px;
+        border: 1px solid #00b4d8;
+        border-radius: 50%;
+        text-decoration: none;
+        color: #fca311;
+        position: relative;
+    }
+    .slider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        z-index: 10; /* Ensure it stays on top of other content */
+    }
+    
+    .slide-track {
+        display: flex;
+        width: calc(100% * 20); /* Make sure there is enough space for all slides */
+        animation: scroll 60s linear infinite; /* Control speed */
+    }
+    
+    .slide-item {
+        flex: 1 1 40%; /* Each item takes 25% of the slider width, so 4 items fit */
+        box-sizing: border-box;
+        padding: 10px;
+        background: #fca311;
+        color: #0d1b2a;
+        text-align: start;
+        font-size: 14px;
+        border-right: 2px solid #fff; /* Separator between items */
+    }
+    
+    .slide-item span {
+        margin-left: 40px;
+    }
+
+}
+@media (min-width: 376px) and (max-width: 600px) and (orientation: portrait){
+    /* Header and Navigation */
+    header {
+        background: rgba(56, 56, 56, 0.233);
+        color: #adb5bd;
+        padding: 15px 200px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 100%;
+        margin-right: 0%;
+        padding-inline: 5px;
+    }
+    header h1, .footer h1 {
+        /* margin: 0; */
+        font-family: "Jacquard 12", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        color: #00b4d8;
+        font-size: 24px;
+        z-index: 1;
+        margin-inline: 5px;
+    }
+    .hero h1 {
+        position: absolute;
+        top: 13%;
+        font-size: 45px;
+        font-family: "Kaushan Script", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    
+    .hero img {
+        max-width: 100%;
+        height: auto;
+        top: 33%;
+        position: absolute;
+    
+    }
+    .socials-container {
+        position: fixed;
+        /* margin-inline: 27px; */
+        right: 52px;
+        top: 80%;
+        /* right: 10px; */
+        transform: translateY(-50%);
+        z-index: 1000;
+    }
+    
+    .socials-container .socials {
+        display: flex;
+        /* flex-direction: column; */
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .socials a {
+        top: 30%;
+        display: block;
+        margin: 10px 0;
+        font-size: 15px;
+        margin-inline: 10px;
+        padding: 15px 20px;
+        border: 1px solid #00b4d8;
+        border-radius: 50%;
+        text-decoration: none;
+        color: #fca311;
+        position: relative;
+    }
+    .slider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        z-index: 10; /* Ensure it stays on top of other content */
+    }
+    
+    .slide-track {
+        display: flex;
+        width: calc(100% * 20); /* Make sure there is enough space for all slides */
+        animation: scroll 60s linear infinite; /* Control speed */
+    }
+    
+    .slide-item {
+        flex: 1 1 40%; /* Each item takes 25% of the slider width, so 4 items fit */
+        box-sizing: border-box;
+        padding: 10px;
+        background: #fca311;
+        color: #0d1b2a;
+        text-align: start;
+        font-size: 14px;
+        border-right: 2px solid #fff; /* Separator between items */
+    }
+    
+    .slide-item span {
+        margin-left: 40px;
+    }
+
+    input#search-bar {
+        display: none;
+    }
+
+    #search-results {
+        display: none;
+    }
+
+}
+@media (min-width: 601px) and (max-width: 750px) and (orientation: portrait){
+    /* Header and Navigation */
+    header {
+        background: rgba(56, 56, 56, 0.233);
+        color: #adb5bd;
+        padding: 15px 200px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 100%;
+        margin-right: 0%;
+        padding-inline: 5px;
+    }
+    header h1, .footer h1 {
+        /* margin: 0; */
+        font-family: "Jacquard 12", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        color: #00b4d8;
+        font-size: 24px;
+        z-index: 1;
+        margin-inline: 5px;
+    }
+    .hero h1 {
+        position: absolute;
+        top: 13%;
+        font-size: 45px;
+        font-family: "Kaushan Script", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+    
+    .hero img {
+        max-width: 100%;
+        height: auto;
+        top: 33%;
+        position: absolute;
+    
+    }
+    .socials-container {
+        position: fixed;
+        /* margin-inline: 27px; */
+        right: 52px;
+        top: 80%;
+        /* right: 10px; */
+        transform: translateY(-50%);
+        z-index: 1000;
+    }
+    
+    .socials-container .socials {
+        display: flex;
+        /* flex-direction: column; */
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .socials a {
+        top: 30%;
+        display: block;
+        margin: 10px 0;
+        font-size: 15px;
+        margin-inline: 10px;
+        padding: 15px 20px;
+        border: 1px solid #00b4d8;
+        border-radius: 50%;
+        text-decoration: none;
+        color: #fca311;
+        position: relative;
+    }
+    .slider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        z-index: 10; /* Ensure it stays on top of other content */
+    }
+    
+    .slide-track {
+        display: flex;
+        width: calc(100% * 20); /* Make sure there is enough space for all slides */
+        animation: scroll 60s linear infinite; /* Control speed */
+    }
+    
+    .slide-item {
+        flex: 1 1 40%; /* Each item takes 25% of the slider width, so 4 items fit */
+        box-sizing: border-box;
+        padding: 10px;
+        background: #fca311;
+        color: #0d1b2a;
+        text-align: start;
+        font-size: 14px;
+        border-right: 2px solid #fff; /* Separator between items */
+    }
+    
+    .slide-item span {
+        margin-left: 40px;
+    }
+
+    input#search-bar {
+        display: none;
+    }
+
+    #search-results {
+        display: none;
+    }
+
+}
+@media (min-width: 751px) and (max-width: 900px) and (orientation: portrait){
+    /* Header and Navigation */
+    header {
+        background: rgba(56, 56, 56, 0.233);
+        color: #adb5bd;
+        padding: 15px 200px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 100%;
+        margin-right: 0%;
+        padding-inline: 5px;
+    }
+    header h1, .footer h1 {
+        /* margin: 0; */
+        font-family: "Jacquard 12", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        color: #00b4d8;
+        font-size: 29px;
+        z-index: 1;
+        margin-inline: 5px;
+    }
+    .hero h1 {
+        position: absolute;
+        top: 8%;
+        font-size: 97px;
+        font-family: "Kaushan Script", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+    
+    .hero img {
+        max-width: 100%;
+        height: auto;
+        top: 33%;
+        position: absolute;
+    
+    }
+    .socials-container {
+        position: fixed;
+        /* margin-inline: 27px; */
+        right: 110px;
+        top: 80%;
+        /* right: 10px; */
+        transform: translateY(-50%);
+        z-index: 1000;
+    }
+    
+    .socials-container .socials {
+        display: flex;
+        /* flex-direction: column; */
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .socials a {
+        top: 30%;
+        display: block;
+        margin: 10px 0;
+        font-size: 25px;
+        margin-inline: 30px;
+        padding: 25px 30px;
+        border: 1px solid #00b4d8;
+        border-radius: 50%;
+        text-decoration: none;
+        color: #fca311;
+        position: relative;
+    }
+    .slider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        z-index: 10; /* Ensure it stays on top of other content */
+    }
+    
+    .slide-track {
+        display: flex;
+        width: calc(100% * 10); /* Make sure there is enough space for all slides */
+        animation: scroll 60s linear infinite; /* Control speed */
+    }
+    
+    .slide-item {
+        flex: 1 1 40%; /* Each item takes 25% of the slider width, so 4 items fit */
+        box-sizing: border-box;
+        padding: 10px;
+        background: #fca311;
+        color: #0d1b2a;
+        text-align: start;
+        font-size: 14px;
+        border-right: 2px solid #fff; /* Separator between items */
+    }
+    
+    .slide-item span {
+        margin-left: 40px;
+    }
+}
+@media (min-width: 901px) and (max-width: 1020px) and (orientation: landscape){
+    /* Header and Navigation */
+    header {
+        background: rgba(56, 56, 56, 0.233);
+        color: #adb5bd;
+        padding: 15px 200px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 100%;
+        margin-right: 0%;
+        padding-inline: 5px;
+    }
+    header h1, .footer h1 {
+        /* margin: 0; */
+        font-family: "Jacquard 12", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        color: #00b4d8;
+        font-size: 29px;
+        z-index: 1;
+        margin-inline: 5px;
+    }
+    .hero h1 {
+        position: absolute;
+        top: 17%;
+        font-size: 70px;
+        font-family: "Kaushan Script", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+    
+    .hero img {
+        max-width: 100%;
+        /* height: auto; */
+        height: 270px;
+        top: 19%;
+        position: absolute;
+    
+    }
+    .socials-container {
+        position: fixed;
+        /* margin-inline: 27px; */
+        right: 20px;
+        top: 50%;
+        /* right: 10px; */
+        transform: translateY(-50%);
+        z-index: 1000;
+    }
+    
+    .socials-container .socials {
+        display: flex;
+        /* flex-direction: column; */
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .socials a {
+        top: 30%;
+        display: block;
+        margin: 10px 0;
+        font-size: 10px;
+        margin-inline: 30px;
+        padding: 5px 10px;
+        border: 1px solid #00b4d8;
+        border-radius: 50%;
+        text-decoration: none;
+        color: #fca311;
+        position: relative;
+    }
+    .slider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        z-index: 10; /* Ensure it stays on top of other content */
+    }
+    
+    .slide-track {
+        display: flex;
+        width: calc(100% * 10); /* Make sure there is enough space for all slides */
+        animation: scroll 60s linear infinite; /* Control speed */
+    }
+    
+    .slide-item {
+        flex: 1 1 40%; /* Each item takes 25% of the slider width, so 4 items fit */
+        box-sizing: border-box;
+        padding: 10px;
+        background: #fca311;
+        color: #0d1b2a;
+        text-align: start;
+        font-size: 14px;
+        border-right: 2px solid #fff; /* Separator between items */
+    }
+    
+    .slide-item span {
+        margin-left: 40px;
+    }
+}
+@media (min-width: 761px) and (max-width: 900px) and (orientation: landscape){
+    /* Header and Navigation */
+    header {
+        background: rgba(56, 56, 56, 0.233);
+        color: #adb5bd;
+        padding: 15px 200px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 100%;
+        margin-right: 0%;
+        padding-inline: 5px;
+    }
+    header h1, .footer h1 {
+        /* margin: 0; */
+        font-family: "Jacquard 12", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        color: #00b4d8;
+        font-size: 29px;
+        z-index: 1;
+        margin-inline: 5px;
+    }
+    .hero h1 {
+        position: absolute;
+        top: 17%;
+        font-size: 70px;
+        font-family: "Kaushan Script", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+    
+    .hero img {
+        max-width: 100%;
+        /* height: auto; */
+        height: 270px;
+        top: 19%;
+        position: absolute;
+    }
+    .socials-container {
+        position: fixed;
+        /* margin-inline: 27px; */
+        right: 20px;
+        top: 50%;
+        /* right: 10px; */
+        transform: translateY(-50%);
+        z-index: 1000;
+    }
+    
+    .socials-container .socials {
+        display: flex;
+        /* flex-direction: column; */
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .socials a {
+        top: 30%;
+        display: block;
+        margin: 10px 0;
+        font-size: 10px;
+        margin-inline: 30px;
+        padding: 10px 15px;
+        border: 1px solid #00b4d8;
+        border-radius: 50%;
+        text-decoration: none;
+        color: #fca311;
+        position: relative;
+    }
+    .slider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        z-index: 10; /* Ensure it stays on top of other content */
+    }
+    
+    .slide-track {
+        display: flex;
+        width: calc(100% * 10); /* Make sure there is enough space for all slides */
+        animation: scroll 60s linear infinite; /* Control speed */
+    }
+    
+    .slide-item {
+        flex: 1 1 40%; /* Each item takes 25% of the slider width, so 4 items fit */
+        box-sizing: border-box;
+        padding: 10px;
+        background: #fca311;
+        color: #0d1b2a;
+        text-align: start;
+        font-size: 14px;
+        border-right: 2px solid #fff; /* Separator between items */
+    }
+    
+    .slide-item span {
+        margin-left: 40px;
+    }
+}
+@media (min-width: 751px) and (max-width: 760px) and (orientation: landscape){
+    /* Header and Navigation */
+    header {
+        background: rgba(56, 56, 56, 0.233);
+        color: #adb5bd;
+        padding: 15px 200px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 100%;
+        margin-right: 0%;
+        padding-inline: 5px;
+    }
+    header h1, .footer h1 {
+        /* margin: 0; */
+        font-family: "Jacquard 12", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        color: #00b4d8;
+        font-size: 29px;
+        z-index: 1;
+        margin-inline: 5px;
+    }
+    .hero h1 {
+        position: absolute;
+        top: 20%;
+        font-size: 60px;
+        font-family: "Kaushan Script", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+    
+    .hero img {
+        max-width: 100%;
+        /* height: auto; */
+        height: 225px;
+        top: 21%;
+        position: absolute;
+    }
+    .socials-container {
+        position: fixed;
+        /* margin-inline: 27px; */
+        right: 20px;
+        top: 50%;
+        /* right: 10px; */
+        transform: translateY(-50%);
+        z-index: 1000;
+    }
+    
+    .socials-container .socials {
+        display: flex;
+        /* flex-direction: column; */
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .socials a {
+        top: 30%;
+        display: block;
+        margin: 10px 0;
+        font-size: 10px;
+        margin-inline: 30px;
+        padding: 8px 13px;
+        border: 1px solid #00b4d8;
+        border-radius: 50%;
+        text-decoration: none;
+        color: #fca311;
+        position: relative;
+    }
+    .slider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        z-index: 10; /* Ensure it stays on top of other content */
+    }
+    
+    .slide-track {
+        display: flex;
+        width: calc(100% * 10); /* Make sure there is enough space for all slides */
+        animation: scroll 60s linear infinite; /* Control speed */
+    }
+    
+    .slide-item {
+        flex: 1 1 40%; /* Each item takes 25% of the slider width, so 4 items fit */
+        box-sizing: border-box;
+        padding: 10px;
+        background: #fca311;
+        color: #0d1b2a;
+        text-align: start;
+        font-size: 14px;
+        border-right: 2px solid #fff; /* Separator between items */
+    }
+    
+    .slide-item span {
+        margin-left: 40px;
+    }
+}
+@media (max-width: 750px) and (orientation: landscape){
+    /* Header and Navigation */
+    header {
+        background: rgba(56, 56, 56, 0.233);
+        color: #adb5bd;
+        padding: 15px 200px;
+        text-align: center;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 100%;
+        margin-right: 0%;
+        padding-inline: 5px;
+    }
+    header h1, .footer h1 {
+        /* margin: 0; */
+        font-family: "Jacquard 12", system-ui;
+        font-weight: 400;
+        font-style: normal;
+        color: #00b4d8;
+        font-size: 29px;
+        z-index: 1;
+        margin-inline: 5px;
+    }
+    .hero h1 {
+        position: absolute;
+        top: 20%;
+        font-size: 60px;
+        font-family: "Kaushan Script", cursive;
+        font-weight: 400;
+        font-style: normal;
+    }
+    
+    .hero img {
+        max-width: 100%;
+        /* height: auto; */
+        height: 225px;
+        top: 21%;
+        position: absolute;
+    }
+    .socials-container {
+        position: fixed;
+        /* margin-inline: 27px; */
+        right: 7px;
+        top: 50%;
+        /* right: 10px; */
+        transform: translateY(-50%);
+        z-index: 1000;
+    }
+    
+    .socials-container .socials {
+        display: flex;
+        /* flex-direction: column; */
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .socials a {
+        top: 30%;
+        display: block;
+        margin: 10px 0;
+        font-size: 10px;
+        margin-inline: 30px;
+        padding: 8px 13px;
+        border: 1px solid #00b4d8;
+        border-radius: 50%;
+        text-decoration: none;
+        color: #fca311;
+        position: relative;
+    }
+    .slider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        overflow: hidden;
+        z-index: 10; /* Ensure it stays on top of other content */
+    }
+    
+    .slide-track {
+        display: flex;
+        width: calc(100% * 10); /* Make sure there is enough space for all slides */
+        animation: scroll 60s linear infinite; /* Control speed */
+    }
+    
+    .slide-item {
+        flex: 1 1 40%; /* Each item takes 25% of the slider width, so 4 items fit */
+        box-sizing: border-box;
+        padding: 10px;
+        background: #fca311;
+        color: #0d1b2a;
+        text-align: start;
+        font-size: 14px;
+        border-right: 2px solid #fff; /* Separator between items */
+    }
+    
+    .slide-item span {
+        margin-left: 40px;
+    }
+}

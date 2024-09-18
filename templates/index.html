@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <title>Groupie Trackers</title>
+</head>
+<body>
+    <header>
+            <h1>G<span>r</span>o<span>u</span>p<span>i</span>e <span>T</span>r<span>a</span>c<span>k</span>e<span>r</span>s</h1>
+            <nav>
+                <div class="nav-links">
+                    <a href="/artists">Artists</a>
+                </div>
+                <!-- Add this to your index.html header or wherever appropriate -->
+                    <div class="search">
+                        <input type="text" id="search-bar" placeholder="Search for artists, members, year..." oninput="searchArtists(this.value)">
+                        <div id="search-results"></div>
+                    </div>
+                    
+                    <div class="search-icon">
+                        <i class="fa fa-search"></i>
+                    </div>
+
+                <div class="hamburger">
+                    <i class="fa fa-bars"></i>
+                </div>
+            </nav>
+    </header>
+    <section class="hero">
+        <img src="/static/images/landing-image.png" alt="image">
+        <h1>G<span>r</span>o<span>u</span>p<span>i</span>e <span>T</span>r<span>a</span>c<span>k</span>e<span>r</span>s</h1>
+    </section>
+    <section class="billboard">
+        <div class="slider">
+            <div class="slide-track">
+                <!-- Add 12 slide items -->
+                <div class="slide-item arrow-up"> <i class="fa-solid fa-arrow-up"></i> 1. <strong>A Bar Song (Tipsy)</strong><br><span>Shaboozey</span></div>
+                <div class="slide-item arrow-down"><i class="fa-solid fa-arrow-down"></i> 2. <strong>I Had Some Help</strong><br><span>Post Malone ft Morgan Wallen</span></div>
+                <div class="slide-item arrow-up"><i class="fa-solid fa-arrow-up"></i> 3. <strong>Die With A Smile</strong><br><span>Lady Gaga & Bruno Mars</span></div>
+                <div class="slide-item arrow-up"><i class="fa-solid fa-arrow-up"></i> 4. <strong>Not Like Us</strong><br><span>Kendrick Lamar</span></div>
+                <div class="slide-item arrow-up"><i class="fa-solid fa-arrow-up"></i> 5. <strong>Birds Of A Feather</strong><br><span>Billie Eilish</span></div>
+                <div class="slide-item arrow-down"><i class="fa-solid fa-arrow-down"></i> 6. <strong>Good Luck, Babe!</strong><br><span>Chappell Roan</span></div>
+                <div class="slide-item arrow-down"><i class="fa-solid fa-arrow-down"></i> 7. <strong>Espresso</strong><br><span>Sabrina Carpenter</span></div>
+                <div class="slide-item arrow-up"><i class="fa-solid fa-arrow-up"></i> 8. <strong>Million Dollar Baby</strong><br><span>Tommy Richman</span></div>
+                <div class="slide-item arrow-up"><i class="fa-solid fa-arrow-up"></i> 9. <strong>Please Please Please</strong><br><span>Sabrina Carpenter</span></div>
+                <div class="slide-item arrow-down"><i class="fa-solid fa-arrow-down"></i> 10. <strong>Lose Control</strong><br><span>Teddy Swims</span></div>
+            </div>
+        </div>
+    </section>
+    <section class="socials-container">
+        <div class="socials">
+           <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+           <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+           <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+           <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+    </section>
+         <!-- Popup for displaying artist details -->
+         <div id="artist-popup" class="popup hidden">
+            <div class="popup-content" id="popup-artist-content">
+                <!-- Artist details will be loaded here -->
+            </div>
+            <span class="close-button">&times;</span>
+        </div>
+    <script src="/static/js/scripts.js"></script>
+</body>
+</html>
