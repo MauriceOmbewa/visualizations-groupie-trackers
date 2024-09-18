@@ -73,8 +73,8 @@ The application provides seamless interaction through client-server communicatio
 
 1. **Clone the repository**
    ```bash
-   git clone https://learn.zone01kisumu.ke/git/seodhiambo/groupie-tracker
-   cd groupie-tracker
+   git clone https://github.com/MauriceOmbewa/visualizations-groupie-trackers.git
+   cd visualizations-groupie-trackers
    ```
 
 2. **Install Go Dependencies**
@@ -165,10 +165,9 @@ func ErrorHandler(w http.ResponseWriter, statusCode int, message string) {
    ```
 6. **Open a pull request**
 
-### **Contributors**
+### **Developer**
 
-- **Seth Athooh** - Software Developer
-- **Maurice Ombewa** - Software Developer
+- [**Maurice Ombewa**](https://github.com/MauriceOmbewa) - Software Developer
 
 ---
 
