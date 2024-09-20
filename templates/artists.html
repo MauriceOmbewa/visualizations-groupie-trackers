@@ -69,7 +69,10 @@
         document.addEventListener("DOMContentLoaded", function () {
             const cards = document.querySelectorAll('.card');
             let currentCardIndex = -1; // Start with no card selected
-        
+    
+            // Number of columns (you can adjust this based on your layout)
+            const numColumns = 4; // Adjust this based on your grid layout
+    
             // Function to highlight the current card
             function selectCard(index) {
                 cards.forEach((card, i) => {
@@ -80,7 +83,7 @@
                     cards[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             }
-        
+    
             // Function to open the selected card's link and trigger the popup
             function openSelectedCard() {
                 if (currentCardIndex >= 0 && currentCardIndex < cards.length) {
@@ -111,27 +114,45 @@
                     }
                 }
             }
-        
+    
             // Listen for keydown events (arrow keys and enter)
             document.addEventListener('keydown', function (e) {
                 if (e.key === 'ArrowRight') {
-                    // If no card has been selected yet, select the first card
+                    // Move to the next card in the same row
                     if (currentCardIndex === -1) {
                         currentCardIndex = 0;
                     } else {
-                        // Otherwise, move to the next card
                         currentCardIndex = (currentCardIndex + 1) % cards.length;
                     }
                     selectCard(currentCardIndex);
+    
                 } else if (e.key === 'ArrowLeft') {
-                    // If no card has been selected yet, select the last card
+                    // Move to the previous card in the same row
                     if (currentCardIndex === -1) {
                         currentCardIndex = cards.length - 1;
                     } else {
-                        // Otherwise, move to the previous card
                         currentCardIndex = (currentCardIndex - 1 + cards.length) % cards.length;
                     }
                     selectCard(currentCardIndex);
+    
+                } else if (e.key === 'ArrowDown') {
+                    // Move to the card directly below in the next row (same column)
+                    if (currentCardIndex === -1) {
+                        currentCardIndex = 0;
+                    } else if (currentCardIndex + numColumns < cards.length) {
+                        currentCardIndex += numColumns;
+                    }
+                    selectCard(currentCardIndex);
+    
+                } else if (e.key === 'ArrowUp') {
+                    // Move to the card directly above in the previous row (same column)
+                    if (currentCardIndex === -1) {
+                        currentCardIndex = 0;
+                    } else if (currentCardIndex - numColumns >= 0) {
+                        currentCardIndex -= numColumns;
+                    }
+                    selectCard(currentCardIndex);
+    
                 } else if (e.key === 'Enter') {
                     // When Enter is pressed, open the selected card's popup
                     openSelectedCard();
@@ -181,7 +202,7 @@
                 }
             });
         });
-    </script>
+    </script>    
     
             
 </body>
