@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="/static/css/styles2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Groupie Trackers - Artists</title>
+    <style>
+        /* Highlight the selected card */
+        .card.selected {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 225, 255, 0.795); /* Glaring bluish shadow on hover */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -13,23 +20,20 @@
          <nav>
              <div class="nav-links">
                 <a href="/">Home</a>
-                 <a href="/artists">Artists</a>
+                <a href="/artists">Artists</a>
              </div>
-             <!-- Add this to your index.html header or wherever appropriate -->
-                <div class="search">
-                     <input type="text" id="search-bar" placeholder="Search for artists, members, year..." oninput="searchArtists(this.value)">
-                     <div id="search-results"></div>
-                 </div>
-                 
-                 <div class="search-icon">
-                     <i class="fa fa-search"></i>
-                 </div>
-
+             <div class="search">
+                 <input type="text" id="search-bar" placeholder="Search for artists, members, year..." oninput="searchArtists(this.value)">
+                 <div id="search-results"></div>
+             </div>
+             <div class="search-icon">
+                 <i class="fa fa-search"></i>
+             </div>
              <div class="hamburger">
                  <i class="fa fa-bars"></i>
              </div>
          </nav>
- </header>
+    </header>
     <main id="content">
         <h2>Artists</h2>
         <div id="artists-container">
@@ -46,14 +50,12 @@
             {{end}}
         </div>
     </main>
-    <!-- Popup for displaying artist details -->
     <div id="artist-popup" class="popup hidden">
         <div class="popup-content" id="popup-artist-content">
             <!-- Artist details will be loaded here -->
         </div>
         <span class="close-button">&times;</span>
     </div>
-
     <div class="footer">
         <h1>G<span>r</span>o<span>u</span>p<span>i</span>e <span>T</span>r<span>a</span>c<span>k</span>e<span>r</span>s</h1>
         <p>&copy; 2024 Groupie Trackers. All rights reserved.</p>
@@ -63,6 +65,124 @@
             <a href="#"><i class="fa fa-instagram"></i></a>
         </p>
     </div>
-    <script src="/static/js/scripts.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cards = document.querySelectorAll('.card');
+            let currentCardIndex = -1; // Start with no card selected
+        
+            // Function to highlight the current card
+            function selectCard(index) {
+                cards.forEach((card, i) => {
+                    card.classList.toggle('selected', i === index); // Add 'selected' class only to the current card
+                });
+                if (index >= 0 && index < cards.length) {
+                    // Scroll the selected card into view
+                    cards[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        
+            // Function to open the selected card's link and trigger the popup
+            function openSelectedCard() {
+                if (currentCardIndex >= 0 && currentCardIndex < cards.length) {
+                    const selectedCard = cards[currentCardIndex];
+                    const cardLink = selectedCard.parentElement; // The card is inside an <a> element
+    
+                    if (cardLink && cardLink.tagName === 'A') {
+                        // Simulate a click on the link to navigate
+                        const artistId = cardLink.getAttribute("href").split("/").pop();
+    
+                        // Fetch and display the artist details in a popup
+                        fetch(`/artist/${artistId}`)
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error('Failed to fetch artist details');
+                                }
+                                return response.text();
+                            })
+                            .then(html => {
+                                const popup = document.getElementById("artist-popup");
+                                const popupContent = document.getElementById("popup-artist-content");
+                                popupContent.innerHTML = html;
+                                popup.classList.remove("hidden");
+                            })
+                            .catch(error => {
+                                console.error('Error fetching artist details:', error);
+                            });
+                    }
+                }
+            }
+        
+            // Listen for keydown events (arrow keys and enter)
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'ArrowRight') {
+                    // If no card has been selected yet, select the first card
+                    if (currentCardIndex === -1) {
+                        currentCardIndex = 0;
+                    } else {
+                        // Otherwise, move to the next card
+                        currentCardIndex = (currentCardIndex + 1) % cards.length;
+                    }
+                    selectCard(currentCardIndex);
+                } else if (e.key === 'ArrowLeft') {
+                    // If no card has been selected yet, select the last card
+                    if (currentCardIndex === -1) {
+                        currentCardIndex = cards.length - 1;
+                    } else {
+                        // Otherwise, move to the previous card
+                        currentCardIndex = (currentCardIndex - 1 + cards.length) % cards.length;
+                    }
+                    selectCard(currentCardIndex);
+                } else if (e.key === 'Enter') {
+                    // When Enter is pressed, open the selected card's popup
+                    openSelectedCard();
+                }
+            });
+        });
+    
+        // Initialize existing popup functionality for artist detail pages
+        document.addEventListener("DOMContentLoaded", function() {
+            const artistLinks = document.querySelectorAll("#artists-container a");
+            const popup = document.getElementById("artist-popup");
+            const closeBtn = document.querySelector(".close-button");
+            const popupContent = document.getElementById("popup-artist-content");
+    
+            // Set up click events for artist links
+            artistLinks.forEach(link => {
+                link.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    const artistId = this.getAttribute("href").split("/").pop();
+    
+                    fetch(`/artist/${artistId}`)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Failed to fetch artist details');
+                            }
+                            return response.text();
+                        })
+                        .then(html => {
+                            popupContent.innerHTML = html;
+                            popup.classList.remove("hidden");
+                        })
+                        .catch(error => {
+                            console.error('Error fetching artist details:', error);
+                        });
+                });
+            });
+    
+            // Close popup when close button is clicked
+            closeBtn.addEventListener("click", function() {
+                popup.classList.add("hidden");
+            });
+    
+            // Close popup when clicking outside of it
+            window.addEventListener("click", function(event) {
+                if (event.target == popup) {
+                    popup.classList.add("hidden");
+                }
+            });
+        });
+    </script>
+    
+            
 </body>
 </html>
