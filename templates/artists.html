@@ -69,9 +69,16 @@
         document.addEventListener("DOMContentLoaded", function () {
             const cards = document.querySelectorAll('.card');
             let currentCardIndex = -1; // Start with no card selected
+            let numColumns = calculateColumns(); // Dynamically calculate the number of columns
     
-            // Number of columns (you can adjust this based on your layout)
-            const numColumns = 4; // Adjust this based on your grid layout
+            // Function to calculate the number of columns dynamically based on the container width and card width
+            function calculateColumns() {
+                const container = document.getElementById('artists-container'); // The container holding the cards
+                const card = cards[0]; // A single card (assuming all cards are the same width)
+                const cardWidth = card.offsetWidth; // Get the width of one card
+                const containerWidth = container.offsetWidth; // Get the width of the container
+                return Math.floor(containerWidth / cardWidth); // Calculate the number of columns
+            }
     
             // Function to highlight the current card
             function selectCard(index) {
@@ -158,6 +165,11 @@
                     openSelectedCard();
                 }
             });
+    
+            // Recalculate the number of columns when the window is resized
+            window.addEventListener('resize', function () {
+                numColumns = calculateColumns();
+            });
         });
     
         // Initialize existing popup functionality for artist detail pages
@@ -202,7 +214,8 @@
                 }
             });
         });
-    </script>    
+    </script>
+        
     
             
 </body>
