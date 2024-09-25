@@ -18,6 +18,7 @@ h1 span {
     color: #fca311;
 }
 
+
 /* Header and Navigation */
 header {
     background: rgba(56, 56, 56, 0.233);
@@ -58,12 +59,16 @@ header nav {
 }
 
 header nav a {
-    color: #adb5bd;
+    color: #fca311;
     margin: 0 15px;
     text-decoration: none;
     font-weight: bold;
     font-size: 18px;
     font-weight: 400;
+}
+
+header nav a:hover {
+    text-decoration: underline;
 }
 
 .hero h1 {
@@ -447,34 +452,49 @@ main {
 
 /* search-bar */
 #search-bar {
-    padding: 10px;
-    border: 1px solid #adb5bd;;
+    font-size: 18px;
+    /* size: 12px; */
+    padding: 12px;
+    border: 1px solid #00b4d8;;
     border-radius: 25px;
     width: 230px;
     background: transparent;
-    color: #fff;
+    color: #fca311;
+}
+#search-bar:focus, #search-bar.selected {
+    outline: none;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 225, 255, 0.795); /* Glaring bluish shadow on hover or select */
 }
 
 #search-results {
     position: absolute;
-    border: 1px solid #adb5bd;
+    border: 1px solid #00b4d8;
     max-height: 200px;
     overflow-y: auto;
     width: 223px;
     z-index: 1000;
     margin-left: 15px;
     border-radius: 6px;
-    color: #fff;
+    color: #fca311;
+ 
 }
 
 .search-result-item {
     padding: 5px;
     cursor: pointer;
+    text-align: start;
+    border-bottom: 1px solid #00b4d8;
 }
 
-.search-result-item:hover {
-    background-color: #ddd;
-    color: #000;
+
+#search-results div:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover, .highlighted {
+    background-color: #fca311;
+    color: #f0f0f0;
 }
 
 .call-to-action-err-btn {
@@ -511,22 +531,6 @@ main {
     align-items: center;
     z-index: 1000;
 }
-
-/* Ensure consistent button styles */
-button, .close-button, .nav-links a {
-    padding: 10px;
-    /* background-color: #fca311; Consistent color */
-    color: #fca311;
-    border: 1px solid#00b4d8;
-    border-radius: 15px;
-    cursor: pointer;
-}
-button:hover, .close-button:hover, .nav-links a:hover {
-    background-color: #fca311;
-    color: #fff;
-    transition: 2s;
-}
-
 
 .popup-content {
     background: #1b263b;

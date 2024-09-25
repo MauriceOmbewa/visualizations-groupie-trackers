@@ -93,3 +93,22 @@ func SearchArtists(query string, artists []Artist) []string {
 
 	return suggestions
 }
+
+func (r Relation) SearchArtistsByLocation(query string, artists []Artist) []string {
+	var results []string
+	query = strings.ToLower(query)
+
+	// Search for the location in the DatesLocations map
+	for location, _ := range r.DatesLocations {
+		if strings.Contains(strings.ToLower(location), query) {
+			// Get the artist related to this location
+			for _, artist := range artists {
+				if artist.ID == r.ID {
+					results = append(results, artist.Name + " - " + location)
+					break
+				}
+			}
+		}
+	}
+	return results
+}

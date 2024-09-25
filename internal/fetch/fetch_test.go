@@ -5,7 +5,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/Athooh/groupie-tracker/internal/models"
+	"groupie-tracker-search-bar/internal/models"
 )
 
 func TestFetchData(t *testing.T) {

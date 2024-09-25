@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/Athooh/groupie-tracker/internal/api"
+	"groupie-tracker-search-bar/internal/api"
 )
 
 func main() {

@@ -1,3 +1,3 @@
-module github.com/Athooh/groupie-tracker
+module groupie-tracker-search-bar
 
 go 1.22.2

@@ -8,6 +8,7 @@ Groupie Tracker is a web application that tracks music artists and provides deta
 ## Table of Contents
 - [Overview](#overview)
 - [Features](#features)
+- [Search Functionality](#search-functionality)
 - [Project Structure](#project-structure)
 - [Tech Stack](#tech-stack)
 - [Installation](#installation)
@@ -21,6 +22,7 @@ Groupie Tracker is a web application that tracks music artists and provides deta
 
 Groupie Tracker aims to provide a user-friendly platform for users to explore information about music artists, their concert locations, and their relationships with other artists. The project integrates an API that serves data related to artists and their events. The primary focus is to allow users to:
 - Browse artists
+- Search for artists, members, locations, and more
 - View specific artist details
 - See event locations and dates
 - Visualize artist relations
@@ -34,9 +36,28 @@ The application provides seamless interaction through client-server communicatio
   - Locations of their concerts
   - Dates of upcoming events
   - Relations with other artists
+- **Search Functionality**: A search bar to search by artist, member, location, or other attributes.
 - **Error Handling**: Custom error pages for common HTTP errors like 404 and 500.
 - **Data Visualization**: Present artist data in a clear and structured format.
-  
+
+## Search Functionality
+
+The search bar enables users to quickly find artists, members, concert locations, and more. The search feature handles the following cases:
+
+- **Artist/Band Name**: Find an artist by their name.
+- **Members**: Search for members of a band.
+- **Locations**: Search by concert locations.
+- **First Album Date**: Search based on the release date of an artist’s first album.
+- **Creation Date**: Search by the artist’s creation date.
+
+### Key Features of the Search Bar:
+
+- **Case-Insensitive**: Searches are case-insensitive, making it easier to find results regardless of input case.
+- **Typing Suggestions**: As you type, suggestions will appear, showing possible matches from multiple categories (artist, member, location, etc.).
+- **Category Display**: The suggestions clearly identify the type of match (e.g., member or artist). For example, typing "phil" could show `Phil Collins - member` and `Phil Collins - artist/band`.
+
+This search feature enhances the user experience by allowing quick access to detailed artist information.
+
 ## Project Structure
 
 ```
@@ -50,7 +71,7 @@ The application provides seamless interaction through client-server communicatio
 │       └── models.go         # Structs for Artists, Locations, Dates, and Relations
 ├── static/
 │   ├── css/                  # Stylesheets for the UI
-│   ├── js/                   # JavaScript files
+│   ├── js/                   # JavaScript files including search logic
 ├── templates/
 │   ├── index.html            # Home page template
 │   ├── artists.html          # Artists listing page
@@ -67,14 +88,15 @@ The application provides seamless interaction through client-server communicatio
 - **HTML/CSS/JavaScript**: For the frontend to create the user interface.
 - **API Integration**: Fetches data about artists, locations, dates, and relations from a provided API.
 - **Text Templates**: Go's built-in HTML templating for rendering dynamic content.
+- **Search Bar**: JavaScript-driven search bar with typing suggestions and categories.
 - **Error Handling**: Custom error pages (404, 500).
 
 ## Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/MauriceOmbewa/visualizations-groupie-trackers.git
-   cd visualizations-groupie-trackers
+   git clone https://learn.zone01kisumu.ke/git/seodhiambo/groupie-tracker-search-bar.git
+   cd groupie-tracker-search-bar
    ```
 
 2. **Install Go Dependencies**
@@ -98,6 +120,7 @@ The application provides seamless interaction through client-server communicatio
 - `/`: Home page that provides a general overview of the project.
 - `/artists`: Lists all the artists retrieved from the API.
 - `/artist/{id}`: Detailed information about a specific artist, including concert locations, dates, and relations with other artists.
+- **Search Bar**: Use the search bar at the top of the site to quickly find artists, members, and more.
 
 ### Custom Error Handling
 The application includes custom error handling for the following scenarios:
@@ -165,9 +188,10 @@ func ErrorHandler(w http.ResponseWriter, statusCode int, message string) {
    ```
 6. **Open a pull request**
 
-### **Developer**
+### **Contributors**
 
-- [**Maurice Ombewa**](https://github.com/MauriceOmbewa) - Software Developer
+- **Seth Athooh** - Software Developer
+- **Maurice Ombewa** - Software Developer
 
 ---
 
@@ -176,3 +200,4 @@ func ErrorHandler(w http.ResponseWriter, statusCode int, message string) {
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
+

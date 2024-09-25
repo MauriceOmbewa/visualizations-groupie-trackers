@@ -58,12 +58,16 @@ header nav {
 }
 
 header nav a {
-    color: #adb5bd;
+    color: #fca311;
     margin: 0 15px;
     text-decoration: none;
     font-weight: bold;
     font-size: 18px;
     font-weight: 400;
+}
+
+header nav a:hover {
+    text-decoration: underline;
 }
 
 .hero h1 {
@@ -192,7 +196,8 @@ section.hero {
     color: #adb5bd;
 }
 
-.footer a:hover i {
+.footer a i  :hover {
+    font-size: 18px;
     color: #fca311;
 }
 /* Main Content */
@@ -246,10 +251,17 @@ main {
     color: #fca311;
 }
 
-.card:hover {
+.card:hover, .card.selected {
     transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 225, 255, 0.795); /* Glaring bluish shadow on hover */
+    box-shadow: 0 8px 16px rgba(0, 225, 255, 0.795); /* Glaring bluish shadow on hover or select */
 }
+
+.card:focus, .card.selected {
+    outline: none;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 225, 255, 0.795); /* Glaring bluish shadow on hover or select */
+}
+
 
 .card h3:hover {
     transform: scale(1.1);
@@ -348,6 +360,10 @@ main {
     font-weight: bold;
 }
 
+.albums img, .albums p {
+    margin-left: 5rem;
+}
+
 
 .artist-name {
     font-size: 2rem;
@@ -355,23 +371,26 @@ main {
 }
 
 .artist-bio {
-    margin-top: 20px;
+    margin:3rem 7rem;
     padding: 20px;
-    background-color: #333;
-    color: #adb5bd;
+    background-color: #fca311;
+    color: #0d1b2a;
+    border-radius: 8px;
 }
 
 .artist-bio h2, .members h2, .tour-dates-locations-container h2 {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: #00b4d8;
+    color: #006d83;
 }
 
 .album-container, .tour-dates-locations-container, .relations {
     width: auto;
     padding: 20px;
-    background-color: #333;
-    margin-top: 20px;
+    background-color: #fca311;
+    margin: 3rem 7rem;
+    border-radius: 8px;
+    color: #0d1b2a;
     /* border-top: 1px solid #ddd; */
 }
 
@@ -386,13 +405,40 @@ main {
     justify-content: space-evenly;
 }
 
+.tour-dates ul, .locations ul {
+    padding: 0;
+}
+
+.tour-dates ul li, .locations ul li {
+    background-color: #0d1b2a;
+    color: #00b4d8;
+    padding: 10px;
+    border-radius: 8px;
+    margin-block: 3px;
+    list-style: none;
+    cursor: pointer;
+    border: 1px solid #00b4d8;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.locations ul li {
+    color: #fca311;
+}
+
+.tour-dates ul li:hover, .locations ul li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 225, 255, 0.8);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
 .album-container .albums, .album-container .members, .tour-dates-locations .tour-dates, .tour-dates-locations .locations {
     flex: 1;
     padding: 10px;
 }
 
 .albums-members p {
-    color: #fca311;
+    color: #0d1b2a;
 }
 
 .albums-members span {
@@ -400,85 +446,144 @@ main {
     font-weight: bold;
 }
 
-.relations-table h2 {
+/* Relations Section */
+.relations h2 {
+    color: #006d83;
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Relations Cards */
+.relations-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.relation-card {
+    background-color: #0d1b2a;
+    border: 1px solid #00b4d8;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: #fca311;
+}
+
+/* .relation-card h3 {
+    font-size: .9rem;
+} */
+
+.relation-card p {
     color: #00b4d8;
 }
 
-.relations-table table {
-    width: 100%;
-    border-collapse: collapse;
+.relation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 225, 255, 0.8);
 }
 
-.relations-table th, .relations-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
+/* Inner layout: Dates and Locations split into 50% width */
+.relation-card-inner {
+    display: flex;
+    justify-content: space-between;
 }
 
-.relations-table th {
+.relation-date, .relation-locations {
+    flex: 1;
+    padding: 10px 2px;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.relation-date h3 {
+    margin: 0;
+    font-size: .9rem;
+    color: #fca311;
+}
+
+.relation-locations p {
+    margin: 0;
+    font-size: .8rem;
     color: #00b4d8;
+}
+
+/* Equal width for both date and locations */
+.relation-date, .relation-locations {
+    text-align: center;
 }
 
 .call-to-action-btn {
-    margin-top: 20px;
+    margin-top: 30px;
     text-align: center;
 }
 
 .call-to-action-btn a {
     padding: 15px 20px;
     text-decoration: none;
-    color: #fca311;
+    color: #0d1b2a;
     border-radius: 25px;
     letter-spacing: .6em;
     text-transform: capitalize;
     background-color: transparent;
-    border: 1px solid #00b4d8;
+    border: 2px solid #0d1b2a;
+    transition: 2s;
 }
 
 .call-to-action-btn a:hover {
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    background-color: #fca311;
+    border: 2px solid #fca311;
+    background-color: #0d1b2a;
     transition: 2s;
     color: #fff;
 }
 
-.popup-content .footer {
-    background-color: #333;
-    text-align: center;
-    padding: 20px;
-    margin-top: 20px;
-} 
-
 /* search-bar */
 #search-bar {
-    padding: 10px;
-    border: 1px solid #adb5bd;;
+    font-size: 18px;
+    /* size: 12px; */
+    padding: 12px;
+    border: 1px solid #00b4d8;;
     border-radius: 25px;
     width: 230px;
     background: transparent;
-    color: #fff;
+    color: #fca311;
+}
+#search-bar:focus, #search-bar.selected {
+    outline: none;
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 225, 255, 0.795); /* Glaring bluish shadow on hover or select */
 }
 
 #search-results {
     position: absolute;
-    border: 1px solid #adb5bd;
+    border: 1px solid #00b4d8;
     max-height: 200px;
     overflow-y: auto;
     width: 223px;
     z-index: 1000;
     margin-left: 15px;
     border-radius: 6px;
-    color: #fff;
+    color: #fca311;
+ 
 }
 
 .search-result-item {
     padding: 5px;
     cursor: pointer;
+    text-align: start;
+    border-bottom: 1px solid #00b4d8;
 }
 
-.search-result-item:hover {
-    background-color: #ddd;
-    color: #000;
+
+#search-results div:last-child {
+    border-bottom: none;
+}
+
+.search-result-item:hover, .highlighted {
+    background-color: #fca311;
+    color: #f0f0f0;
 }
 
 .call-to-action-err-btn {
@@ -502,69 +607,19 @@ main {
     background-color: transparent;
     transition: 2s;
 }
-/* POP-UP FEATURE */
-.popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.popup-content {
-    background: #1b263b;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 1000px;
-    max-height: 90%;
-    overflow-y: scroll;
-    scrollbar-width: none;
-    position: relative;
-    box-shadow: 
-        0 18px 25px rgba(0, 225, 255, 0.795),  /* Bottom shadow, more concentrated */
-        -4px 0 13px rgba(0, 225, 255, 0.795), /* Left glare */
-        4px 0 13px rgba(0, 225, 255, 0.795),  /* Right glare */
-        0 6px 13px rgba(0, 225, 255, 0.795);  /* top glare */ 
-}
-
-/* Ensure consistent button styles */
-button, .close-button, .nav-links a {
-    padding: 10px;
-    /* background-color: #fca311; Consistent color */
-    color: #fca311;
-    border: 1px solid#00b4d8;
-    border-radius: 15px;
-    cursor: pointer;
-}
-button:hover, .close-button:hover, .nav-links a:hover {
-    background-color: #fca311;
-    color: #fff;
-    transition: 2s;
-}
-
-.close-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 55px;
-    cursor: pointer;
-}
-
-.hidden {
-    display: none;
-}
-
 
 .hamburger, .search-icon {
     display: none;
 }
 
+section.map-container {
+    margin-inline: 7rem;
+}
+
+.map-container h2 {
+    color: #00b4d8;
+    text-align: center;
+}
 
 /* Responsive Design */
 @media (min-width: 600px) and (max-width: 768px) {
@@ -777,6 +832,7 @@ button:hover, .close-button:hover, .nav-links a:hover {
     i.fa.fa-search {
         display: none;
     }
+
 
     .search input {
         display: none;

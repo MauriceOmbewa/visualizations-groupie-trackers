@@ -5,17 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/styles2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>{{.Artist.Name}}</title>
+    <!-- Mapbox CSS -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css" rel="stylesheet" />
+    <!-- Mapbox JS -->
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"></script>
+    <title>{{.ArtistDetail.Artist.Name}}</title>
 </head>
 <body>
     <!-- Hero Banner -->
     <section class="hero-banner">
         <div class="overlay">
             <div class="artist-details">
-                <img src="{{.Artist.Image}}" alt="{{.Artist.Name}}">
-                <h1 class="artist-name">{{.Artist.Name}}</h1>
-                <p class="creation-date"><span>Creation Date:</span> {{.Artist.CreationDate}}</p>
-                <p class="first-album"><span>First Album:</span> {{.Artist.FirstAlbum}}</p>
+                <img src="{{.ArtistDetail.Artist.Image}}" alt="{{.ArtistDetail.Artist.Name}}">
+                <h1 class="artist-name">{{.ArtistDetail.Artist.Name}}</h1>
+                <p class="creation-date"><span>Creation Date:</span> {{.ArtistDetail.Artist.CreationDate}}</p>
+                <p class="first-album"><span>First Album:</span> {{.ArtistDetail.Artist.FirstAlbum}}</p>
             </div>
         </div>
     </section>
@@ -24,24 +28,34 @@
     <section class="artist-bio">
         <h2>About the Artist</h2>
         <p>
-            Welcome to {{.Artist.Name}}'s official page! Since {{.Artist.CreationDate}}, {{.Artist.Name}} has captivated audiences worldwide with their distinctive sound blending Soul, HipHop, and Country. 
-            Starting their journey back in the day, they achieved early success with their first album that debuted in {{.Artist.FirstAlbum}} and its number one hit single for 2 months on Billboard. 
-            Known for their innovative style and emotional lyrics, {{.Artist.Name}} has earned accolades including Grammy and Oscars. 
+            Welcome to {{.ArtistDetail.Artist.Name}}'s official page! Since {{.ArtistDetail.Artist.CreationDate}}, {{.ArtistDetail.Artist.Name}} has captivated audiences worldwide with their distinctive sound blending Soul, HipHop, and Country. 
+            Starting their journey back in the day, they achieved early success with their first album that debuted in {{.ArtistDetail.Artist.FirstAlbum}} and its number one hit single for 2 months on Billboard. 
+            Known for their innovative style and emotional lyrics, {{.ArtistDetail.Artist.Name}} has earned accolades including Grammy and Oscars. 
             Their electrifying live performances at venues like Detroit, New York, London showcase their exceptional talent. 
-            Currently, {{.Artist.Name}} is working on new projects and an upcoming tour. Stay updated on their latest music, news, and tour dates here and follow {{.Artist.Name}} on their Socials for more updates.
+            Currently, {{.ArtistDetail.Artist.Name}} is working on new projects and an upcoming tour. Stay updated on their latest music, news, and tour dates here and follow {{.ArtistDetail.Artist.Name}} on their Socials for more updates.
         </p>
     </section>
+
+      <!-- Embed concert locations in a hidden div -->
+        <div id="ConcertLocationsJSON" style="display: none;">
+            {{ .ConcertLocationsJSON | html }}
+        </div>
+        <!-- Map Container -->
+        <section class="map-container">
+            <h2>Concert Locations</h2>
+            <div id="map" style="width: 100%; height: 600px;"></div>
+        </section>
 
     <!-- Albums & Members -->
     <section class="album-container">
         <div class="albums-members">
             <div class="albums">
                 <img src="/static/images/record1.svg" alt="record image">
-                <p><strong><span>First Album:</span></strong> {{.Artist.FirstAlbum}}</p>
+                <p><strong><span>First Album:</span></strong> {{.ArtistDetail.Artist.FirstAlbum}}</p>
             </div>
             <div class="members">
-                <h2>{{.Artist.Name}} Members</h2>
-                <p><strong><span>Members:</span></strong> {{Join .Artist.Members ", "}}</p>
+                <h2>{{.ArtistDetail.Artist.Name}} Members</h2>
+                <p><strong><span>Members:</span></strong> {{Join .ArtistDetail.Artist.Members ", "}}</p>
             </div>
         </div>
     </section>
@@ -52,7 +66,7 @@
             <div class="tour-dates">
                 <h2>Tour Dates</h2>
                 <ul>
-                    {{range .Dates.Dates}}
+                    {{range .ArtistDetail.Dates.Dates}}
                     <li>{{.}}</li>
                     {{end}}
                 </ul>
@@ -60,7 +74,7 @@
             <div class="locations">
                 <h2>Concert Locations</h2>
                 <ul>
-                    {{range .Locations.Locations}}
+                    {{range .ArtistDetail.Locations.Locations}}
                     <li>{{.}}</li>
                     {{end}}
                 </ul>
@@ -68,31 +82,29 @@
         </div>
     </section>
 
-    <!-- Relations -->
-    <section class="relations">
-        <div class="relations-table">
-            <h2>Locations & Dates Relations</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Locations</th>
-                        <th>Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{range $date, $locations := .Relations.DatesLocations}}
-                    <tr>
-                        <td>{{$date}}</td>
-                        <td>{{Join $locations ", "}}</td>
-                    </tr>
-                    {{end}}
-                </tbody>
-            </table>
+    <!-- Relations Section -->
+<!-- Relations Section -->
+<section class="relations">
+    <h2>Locations & Dates Relations</h2>
+    <div class="relations-cards-container">
+        {{range $date, $locations := .ArtistDetail.Relations.DatesLocations}}
+        <div class="relation-card">
+            <div class="relation-card-inner">
+                <div class="relation-date">
+                    <h3>{{$date}}</h3>
+                </div>
+                <div class="relation-locations">
+                    <p>{{Join $locations ", "}}</p>
+                </div>
+            </div>
         </div>
-        <div class="call-to-action-btn">
-            <a href="/artists">Find more artists</a>
-        </div>
-    </section>
+        {{end}}
+    </div>
+    <div class="call-to-action-btn">
+        <a href="/artists">Find more artists</a>
+    </div>
+</section>
+
 
     <!-- Footer -->
     <div class="footer">
