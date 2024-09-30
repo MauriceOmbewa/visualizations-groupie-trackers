@@ -21,55 +21,121 @@ h1 span {
 
 /* Header and Navigation */
 header {
-    background: rgba(56, 56, 56, 0.233);
-    color: #adb5bd;
-    padding: 15px 200px;
-    text-align: center;
+    background: #14213d; /* Dark blue background */
+    color: #fff;
+    padding: 15px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    max-width: 100%;
-    margin: auto;
+    transition: top 0.3s ease-in-out; /* Transition for scroll behavior */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
 }
 
-
-header h1, .footer h1 {
-    margin: 0;
-    font-family: "Jacquard 12", system-ui;
-    font-weight: 400;
-    font-style: normal;
-    color: #00b4d8;
-    font-size: 36px;
-    z-index: 1;
+header .header-navlinks {
+    margin-right: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
 }
 
-header h1 span, .footer h1 span {
-    color: #fca311;
-    font-family: "Jacquard 12", system-ui;
-}
-
-header nav {
-    margin-top: 10px;
+header nav ul{
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    z-index: 1;
+    gap: 20px;
+}
+header .logo {
+    margin-left: 3rem;
 }
 
-header nav a {
+header .logo h1 {
+    font-size: 26px;
+    font-family: 'Kaushan Script', cursive;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
     color: #fca311;
-    margin: 0 15px;
-    text-decoration: none;
-    font-weight: bold;
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    position: relative;
+    padding: 5px 0;
 }
 
-header nav a:hover {
-    text-decoration: underline;
+nav ul li a:hover {
+    color: #00f2fe;
 }
+
+nav ul li a::before {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: #00f2fe;
+    bottom: 0;
+    left: 0;
+    transition: 0.4s;
+}
+
+nav ul li a:hover::before {
+    width: 100%;
+}
+
+
+/* header .nav-links {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    flex: 1;
+} */
+
+/* header .nav-links a {
+    color: #fca311;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    position: relative;
+    padding: 5px 0;
+}
+
+header .nav-links a:hover {
+    color: #00f2fe;
+}
+
+header .nav-links a::before {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: #00f2fe;
+    bottom: 0;
+    left: 0;
+    transition: 0.4s;
+}
+
+header .nav-links a:hover::before {
+    width: 100%;
+} */
+
+/* Hamburger Menu for Mobile */
+.hamburger {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
 
 .hero h1 {
     position: absolute;
@@ -90,7 +156,7 @@ section.hero {
     justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    margin-top: 50px;
+    margin-top: 8rem;
 }
 
 /* Slider Styles */
@@ -181,275 +247,6 @@ section.hero {
     100% { transform: translateX(-100%); }
 }
 
-.footer {
-    padding: 20px 200px;
-    background: rgba(56, 56, 56, 0.233);
-    color: #adb5bd;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-}
-
-.footer a i {
-    font-size: 18px;
-    color: #adb5bd;
-}
-/* Main Content */
-main {
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-/* Cards for Artists */
-#artists-container, #locations-container, #dates-container, #relations-container {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-#artists-container a {
-    text-decoration: none;
-    list-style: none;
-}
-
-/* card 1 example */
-.card {
-    position: relative;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-    width: 280px;  /* Default width increased by 40px */
-    height: 280px; /* Default height increased by 40px */
-    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
-}
-.card-img {
-    width: 100%;
-    height: auto;
-    border-radius: 10px 10px 0 0;
-}
-
-.card-overlay {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    padding-block: 10px;
-    text-align: center;
-}
-
-.card-overlay h3 {
-    color: #fca311;
-}
-
-.card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 225, 255, 0.795); /* Glaring bluish shadow on hover */
-}
-
-.card h3:hover {
-    transform: scale(1.1);
-    color: rgba(0, 225, 255, 0.795);
-}
-
-#content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-#content h2 {
-    font-size: 45px;
-    color: #00b4d8;
-    font-family: "Rock Salt", cursive;
-    font-weight: 400;
-    font-style: normal;
-}
-
-#content span {
-    color: #adb5bd;
-    font-size: 26px;
-    font-family: "Poppins", system-ui;
-    font-weight: 300;
-    font-style: normal;
-}
-
-#content .call-to-action {
-    margin-top: 50px;
-}
-
-#content .call-to-action a{
-    padding: 15px 20px;
-    text-decoration: none;
-    color: #fff;
-    border-radius: 25px;
-    letter-spacing: .6em;
-    text-transform: capitalize;
-    background-color: #778da9;
-}
-
-#content .call-to-action a:hover {
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    background-color: transparent;
-    transition: 2s;
-}
-
-.err-msg p {
-    color: #adb5bd;
-    font-size: 25px;
-}
-
-.hero-banner {
-    background: url('/static/images/artist-detail-banner2.jpg');
-    height: 350px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.overlay {
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.artist-details {
-    color: #fca311;
-    text-align: center;
-    position: relative;
-    z-index: 2;
-    margin-top: 20px;
-}
-
-.artist-details h1 {
-    font-family: "Rock Salt", cursive;
-    color: #00b4d8;
-    padding-block: 0px;
-}
-
-.artist-details img {
-    border-radius: 50%;
-    /* margin-bottom: 15px; */
-    width: 150px;
-    height: 150px;
-}
-
-.artist-details span {
-    color: #00b4d8;
-    font-weight: bold;
-}
-
-
-.artist-name {
-    font-size: 2rem;
-    margin: 10px 0;
-}
-
-.artist-bio {
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #333;
-    color: #adb5bd;
-}
-
-.artist-bio h2, .members h2, .tour-dates-locations-container h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    color: #00b4d8;
-}
-
-.album-container, .tour-dates-locations-container, .relations {
-    width: auto;
-    padding: 20px;
-    background-color: #333;
-    margin-top: 20px;
-    /* border-top: 1px solid #ddd; */
-}
-
-.album-container .albums-members {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.tour-dates-locations {
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.album-container .albums, .album-container .members, .tour-dates-locations .tour-dates, .tour-dates-locations .locations {
-    flex: 1;
-    padding: 10px;
-}
-
-.albums-members p {
-    color: #fca311;
-}
-
-.albums-members span {
-    color: #00b4d8;
-    font-weight: bold;
-}
-
-.relations-table h2 {
-    color: #00b4d8;
-}
-
-.relations-table table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-.relations-table th, .relations-table td {
-    padding: 10px;
-    border: 1px solid #ddd;
-    text-align: left;
-}
-
-.relations-table th {
-    color: #00b4d8;
-}
-
-.call-to-action-btn {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.call-to-action-btn a {
-    padding: 15px 20px;
-    text-decoration: none;
-    color: #fca311;
-    border-radius: 25px;
-    letter-spacing: .6em;
-    text-transform: capitalize;
-    background-color: transparent;
-    border: 1px solid #00b4d8;
-}
-
-.call-to-action-btn a:hover {
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    background-color: #fca311;
-    transition: 2s;
-    color: #fff;
-}
-
-.popup-content .footer {
-    background-color: #333;
-    text-align: center;
-    padding: 20px;
-    margin-top: 20px;
-} 
-
 /* search-bar */
 #search-bar {
     font-size: 18px;
@@ -488,79 +285,18 @@ main {
 }
 
 
-#search-results div:last-child {
+/* #search-results div:last-child {
     border-bottom: none;
-}
+} */
 
 .search-result-item:hover, .highlighted {
     background-color: #fca311;
     color: #f0f0f0;
 }
 
-.call-to-action-err-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.call-to-action-err-btn a {
-    padding: 15px 20px;
-    text-decoration: none;
-    color: #fff;
-    border-radius: 25px;
-    letter-spacing: .6em;
-    text-transform: capitalize;
-    background-color: #778da9;
-}
-    
-.call-to-action-err-btn a:hover {
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    background-color: transparent;
-    transition: 2s;
-}
-/* POP-UP FEATURE */
-.popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.popup-content {
-    background: #1b263b;
-    padding: 20px;
-    border-radius: 8px;
-    width: 80%;
-    max-width: 1000px;
-    max-height: 90%;
-    overflow-y: scroll;
-    scrollbar-width: none;
-    position: relative;
-    box-shadow: 
-        0 18px 25px rgba(0, 225, 255, 0.795),  /* Bottom shadow, more concentrated */
-        -4px 0 13px rgba(0, 225, 255, 0.795), /* Left glare */
-        4px 0 13px rgba(0, 225, 255, 0.795),  /* Right glare */
-        0 6px 13px rgba(0, 225, 255, 0.795);  /* top glare */ 
-}
-
-.close-button {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 55px;
-    cursor: pointer;
-}
-
 .hidden {
     display: none;
 }
-
 
 .hamburger, .search-icon {
     display: none;
@@ -569,19 +305,86 @@ main {
 @media (max-width: 375px)and (orientation: portrait){
     /* Header and Navigation */
     header {
-        background: rgba(56, 56, 56, 0.233);
-        color: #adb5bd;
-        padding: 15px 200px;
-        text-align: center;
+        padding: 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-wrap: wrap;
-        max-width: 100%;
-        margin-right: 0%;
-        padding-inline: 5px;
     }
-    header h1, .footer h1 {
+
+    header .logo {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    /* Hide the menu by default */
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100px;
+        right: 0;
+        width: 250px;
+        background-color: #14213d;
+        text-align: center;
+        padding: 10px;
+        z-index: 100;
+        transform: translateX(100%);
+        transition: transform 0.5s ease;
+    }
+
+    /* Show the menu when active */
+    .nav-menu.active {
+        display: block;
+        transform: translateX(0);
+        animation: slideIn 0.5s ease-out forwards;
+    }
+
+    /* Menu Links */
+    .nav-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .nav-menu ul li {
+        padding: 10px 20px 10px 0;
+    }
+
+    .nav-menu ul li a {
+        color: #fca311;
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+    /* Slide-in animation for the menu */
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    /* Fun Bounce animation for the hamburger icon */
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+        }
+
+    }
+
+    .search {
+        float: right;
+    }
+    
+    .footer h1 {
         /* margin: 0; */
         font-family: "Jacquard 12", system-ui;
         font-weight: 400;
@@ -590,15 +393,6 @@ main {
         font-size: 24px;
         z-index: 1;
         margin-inline: 5px;
-    }
-
-
-    input#search-bar {
-        display: none;
-    }
-
-    #search-results {
-        display: none;
     }
 
     .hero h1 {
@@ -680,19 +474,86 @@ main {
 @media (min-width: 376px) and (max-width: 600px) and (orientation: portrait){
     /* Header and Navigation */
     header {
-        background: rgba(56, 56, 56, 0.233);
-        color: #adb5bd;
-        padding: 15px 200px;
-        text-align: center;
+        padding: 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-wrap: wrap;
-        max-width: 100%;
-        margin-right: 0%;
-        padding-inline: 5px;
     }
-    header h1, .footer h1 {
+
+    header .logo {
+        display: none;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    /* Hide the menu by default */
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100px;
+        right: 0;
+        width: 250px;
+        background-color: #14213d;
+        text-align: center;
+        padding: 10px;
+        z-index: 100;
+        transform: translateX(100%);
+        transition: transform 0.5s ease;
+    }
+
+    /* Show the menu when active */
+    .nav-menu.active {
+        display: block;
+        transform: translateX(0);
+        animation: slideIn 0.5s ease-out forwards;
+    }
+
+    /* Menu Links */
+    .nav-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .nav-menu ul li {
+        padding: 10px 20px 10px 0;
+    }
+
+    .nav-menu ul li a {
+        color: #fca311;
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+    /* Slide-in animation for the menu */
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    /* Fun Bounce animation for the hamburger icon */
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+        }
+
+    }
+
+    .search {
+        float: right;
+    }
+
+    .footer h1 {
         /* margin: 0; */
         font-family: "Jacquard 12", system-ui;
         font-weight: 400;
@@ -704,29 +565,32 @@ main {
     }
     .hero h1 {
         position: absolute;
-        top: 13%;
+        top: 10%;
         font-size: 45px;
         font-family: "Kaushan Script", cursive;
         font-weight: 400;
         font-style: normal;
+        margin-block: 20px;
     }
 
     
     .hero img {
         max-width: 100%;
         height: auto;
-        top: 33%;
+        top: 20%;
         position: absolute;
     
     }
     .socials-container {
-        position: fixed;
+        /* position: fixed; */
         /* margin-inline: 27px; */
-        right: 52px;
+        /* right: 52px; */
         top: 80%;
         /* right: 10px; */
-        transform: translateY(-50%);
-        z-index: 1000;
+        transform: translateX(-10%);
+        /* right: 100%; */
+        /* align-items: center; */
+        /* z-index: 1000; */
     }
     
     .socials-container .socials {
@@ -737,7 +601,6 @@ main {
         align-items: center;
     }
     .socials a {
-        top: 30%;
         display: block;
         margin: 10px 0;
         font-size: 15px;
@@ -747,7 +610,7 @@ main {
         border-radius: 50%;
         text-decoration: none;
         color: #fca311;
-        position: relative;
+        /* position: relative; */
     }
     .slider {
         position: absolute;
@@ -778,41 +641,90 @@ main {
     .slide-item span {
         margin-left: 40px;
     }
-
-    input#search-bar {
-        display: none;
-    }
-
-    #search-results {
-        display: none;
-    }
-
 }
+
 @media (min-width: 601px) and (max-width: 750px) and (orientation: portrait){
     /* Header and Navigation */
     header {
-        background: rgba(56, 56, 56, 0.233);
-        color: #adb5bd;
-        padding: 15px 200px;
-        text-align: center;
+        padding: 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-wrap: wrap;
-        max-width: 100%;
-        margin-right: 0%;
-        padding-inline: 5px;
     }
-    header h1, .footer h1 {
-        /* margin: 0; */
-        font-family: "Jacquard 12", system-ui;
-        font-weight: 400;
-        font-style: normal;
-        color: #00b4d8;
-        font-size: 24px;
-        z-index: 1;
-        margin-inline: 5px;
+
+    header .logo {
+        display: none;
     }
+
+    .hamburger {
+        display: block;
+    }
+
+    /* Hide the menu by default */
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100px;
+        right: 0;
+        width: 250px;
+        background-color: #14213d;
+        text-align: center;
+        padding: 10px;
+        z-index: 100;
+        transform: translateX(100%);
+        transition: transform 0.5s ease;
+    }
+
+    /* Show the menu when active */
+    .nav-menu.active {
+        display: block;
+        transform: translateX(0);
+        animation: slideIn 0.5s ease-out forwards;
+    }
+
+    /* Menu Links */
+    .nav-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .nav-menu ul li {
+        padding: 10px 20px 10px 0;
+    }
+
+    .nav-menu ul li a {
+        color: #fca311;
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+    /* Slide-in animation for the menu */
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    /* Fun Bounce animation for the hamburger icon */
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+        }
+
+    }
+
+    .search {
+        float: right;
+    }
+
     .hero h1 {
         position: absolute;
         top: 13%;
@@ -888,41 +800,89 @@ main {
     .slide-item span {
         margin-left: 40px;
     }
-
-    input#search-bar {
-        display: none;
-    }
-
-    #search-results {
-        display: none;
-    }
-
 }
+
 @media (min-width: 751px) and (max-width: 900px) and (orientation: portrait){
     /* Header and Navigation */
     header {
-        background: rgba(56, 56, 56, 0.233);
-        color: #adb5bd;
-        padding: 15px 200px;
-        text-align: center;
+        padding: 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-wrap: wrap;
-        max-width: 100%;
-        margin-right: 0%;
-        padding-inline: 5px;
     }
-    header h1, .footer h1 {
-        /* margin: 0; */
-        font-family: "Jacquard 12", system-ui;
-        font-weight: 400;
-        font-style: normal;
-        color: #00b4d8;
-        font-size: 29px;
-        z-index: 1;
-        margin-inline: 5px;
+
+    header .logo {
+        display: none;
     }
+
+    .hamburger {
+        display: block;
+    }
+
+    /* Hide the menu by default */
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100px;
+        right: 0;
+        width: 250px;
+        background-color: #14213d;
+        text-align: center;
+        padding: 10px;
+        z-index: 100;
+        transform: translateX(100%);
+        transition: transform 0.5s ease;
+    }
+
+    /* Show the menu when active */
+    .nav-menu.active {
+        display: block;
+        transform: translateX(0);
+        animation: slideIn 0.5s ease-out forwards;
+    }
+
+    /* Menu Links */
+    .nav-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .nav-menu ul li {
+        padding: 10px 20px 10px 0;
+    }
+
+    .nav-menu ul li a {
+        color: #fca311;
+        text-decoration: none;
+        font-size: 18px;
+    }
+
+    /* Slide-in animation for the menu */
+    @keyframes slideIn {
+        from {
+            transform: translateX(100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    /* Fun Bounce animation for the hamburger icon */
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+        }
+
+    }
+    .search {
+        float: right;
+    }
+
     .hero h1 {
         position: absolute;
         top: 8%;
@@ -999,12 +959,10 @@ main {
         margin-left: 40px;
     }
 }
-@media (min-width: 901px) and (max-width: 1020px) and (orientation: landscape){
+@media (min-width: 901px) and (max-width: 1024px) and (orientation: landscape){
     /* Header and Navigation */
     header {
-        background: rgba(56, 56, 56, 0.233);
-        color: #adb5bd;
-        padding: 15px 200px;
+        padding: 20px 7rem;
         text-align: center;
         display: flex;
         justify-content: space-between;
@@ -1026,7 +984,7 @@ main {
     }
     .hero h1 {
         position: absolute;
-        top: 17%;
+        top: 30%;
         font-size: 70px;
         font-family: "Kaushan Script", cursive;
         font-weight: 400;
@@ -1036,11 +994,11 @@ main {
     .hero img {
         max-width: 100%;
         /* height: auto; */
-        height: 270px;
-        top: 19%;
+        height: 250px;
+        top: 30%;
         position: absolute;
-    
     }
+
     .socials-container {
         position: fixed;
         /* margin-inline: 27px; */
@@ -1082,7 +1040,7 @@ main {
     
     .slide-track {
         display: flex;
-        width: calc(100% * 10); /* Make sure there is enough space for all slides */
+        width: calc(100% * 30); /* Make sure there is enough space for all slides */
         animation: scroll 60s linear infinite; /* Control speed */
     }
     
@@ -1104,9 +1062,7 @@ main {
 @media (min-width: 761px) and (max-width: 900px) and (orientation: landscape){
     /* Header and Navigation */
     header {
-        background: rgba(56, 56, 56, 0.233);
-        color: #adb5bd;
-        padding: 15px 200px;
+        padding: 20px 7rem;
         text-align: center;
         display: flex;
         justify-content: space-between;
@@ -1205,9 +1161,7 @@ main {
 @media (min-width: 751px) and (max-width: 760px) and (orientation: landscape){
     /* Header and Navigation */
     header {
-        background: rgba(56, 56, 56, 0.233);
-        color: #adb5bd;
-        padding: 15px 200px;
+        padding: 20px 4rem;
         text-align: center;
         display: flex;
         justify-content: space-between;
@@ -1215,7 +1169,6 @@ main {
         flex-wrap: wrap;
         max-width: 100%;
         margin-right: 0%;
-        padding-inline: 5px;
     }
     header h1, .footer h1 {
         /* margin: 0; */
@@ -1306,9 +1259,7 @@ main {
 @media (max-width: 750px) and (orientation: landscape){
     /* Header and Navigation */
     header {
-        background: rgba(56, 56, 56, 0.233);
-        color: #adb5bd;
-        padding: 15px 200px;
+        padding: 20px 4rem;
         text-align: center;
         display: flex;
         justify-content: space-between;
@@ -1316,7 +1267,6 @@ main {
         flex-wrap: wrap;
         max-width: 100%;
         margin-right: 0%;
-        padding-inline: 5px;
     }
     header h1, .footer h1 {
         /* margin: 0; */

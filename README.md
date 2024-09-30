@@ -188,10 +188,9 @@ func ErrorHandler(w http.ResponseWriter, statusCode int, message string) {
    ```
 6. **Open a pull request**
 
-### **Contributors**
+### **Developer**
 
-- **Seth Athooh** - Software Developer
-- **Maurice Ombewa** - Software Developer
+- [Maurice Ombewa](www.github.com/MauriceOmbewa) - Software Developer
 
 ---
 

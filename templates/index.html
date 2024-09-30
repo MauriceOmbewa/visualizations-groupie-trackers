@@ -10,25 +10,26 @@
 </head>
 <body>
     <header>
-            <h1>G<span>r</span>o<span>u</span>p<span>i</span>e <span>T</span>r<span>a</span>c<span>k</span>e<span>r</span>s</h1>
-            <nav>
-                <div class="nav-links">
-                    <a href="/artists">Artists</a>
-                </div>
-                <!-- Add this to your index.html header or wherever appropriate -->
-                    <div class="search">
-                        <input type="text" id="search-bar" placeholder="Search for artists, members, year..." oninput="searchArtists(this.value)">
-                        <div id="search-results"></div>
-                    </div>
-                    
-                    <div class="search-icon">
-                        <i class="fa fa-search"></i>
-                    </div>
-
-                <div class="hamburger">
-                    <i class="fa fa-bars"></i>
-                </div>
-            </nav>
+        <div class="logo">
+        <h1>G<span>r</span>o<span>u</span>p<span>i</span>e <span>T</span>r<span>a</span>c<span>k</span>e<span>r</span>s</h1>
+        </div>
+       
+        <div class="hamburger" id="hamburger">
+            <i class="fa fa-bars"></i>
+        </div>
+        <div class="header-navlinks">
+        <nav class="nav-menu" id="nav-menu">
+            <ul>
+                <li><a href="/" class="menu-link">Home</a></li>
+                <li><a href="/artists" class="menu-link">Artists</a></li>
+            </ul>
+            <!-- Add this to your index.html header or wherever appropriate -->
+        </nav>
+        <div class="search">
+            <input type="text" id="search-bar" placeholder="Search for artists, members, year..." oninput="searchArtists(this.value)">
+            <div id="search-results"></div>
+        </div>
+        </div>
     </header>
     <section class="hero">
         <img src="/static/images/landing-image.png" alt="image">

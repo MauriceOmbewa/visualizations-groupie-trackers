@@ -12,6 +12,28 @@
     <title>{{.ArtistDetail.Artist.Name}}</title>
 </head>
 <body>
+    <header>
+        <div class="logo">
+        <h1>G<span>r</span>o<span>u</span>p<span>i</span>e <span>T</span>r<span>a</span>c<span>k</span>e<span>r</span>s</h1>
+        </div>
+
+        <div class="hamburger" id="hamburger">
+            <i class="fa fa-bars"></i>
+        </div>
+        <div class="header-navlinks">
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="/" class="menu-link">Home</a></li>
+                    <li><a href="/artists" class="menu-link">Artists</a></li>
+                </ul>
+                <!-- Add this to your index.html header or wherever appropriate -->
+            </nav>
+            <div class="search">
+                <input type="text" id="search-bar" placeholder="Search for artists, members, year..." oninput="searchArtists(this.value)">
+                <div id="search-results"></div>
+            </div>
+            </div>
+</header>
     <!-- Hero Banner -->
     <section class="hero-banner">
         <div class="overlay">
@@ -43,14 +65,15 @@
         <!-- Map Container -->
         <section class="map-container">
             <h2>Concert Locations</h2>
-            <div id="map" style="width: 100%; height: 600px;"></div>
+            <div id="map"></div>
         </section>
 
     <!-- Albums & Members -->
     <section class="album-container">
         <div class="albums-members">
             <div class="albums">
-                <img src="/static/images/record1.svg" alt="record image">
+                <h2>Album Launch</h2>
+                <!-- <img src="/static/images/record1.svg" alt="record image"> -->
                 <p><strong><span>First Album:</span></strong> {{.ArtistDetail.Artist.FirstAlbum}}</p>
             </div>
             <div class="members">
@@ -110,7 +133,7 @@
     <div class="footer">
         <h1>G<span>r</span>o<span>u</span>p<span>i</span>e <span>T</span>r<span>a</span>c<span>k</span>e<span>r</span>s</h1>
         <p>&copy; 2024 Groupie Trackers. All rights reserved.</p>
-        <p>Follow us on:
+        <p>
             <a href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
             <a href="#"><i class="fa fa-instagram"></i></a>
