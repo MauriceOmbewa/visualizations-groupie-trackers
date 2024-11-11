@@ -1,4 +1,5 @@
 
+
 ---
 
 # Groupie Tracker
@@ -9,6 +10,7 @@ Groupie Tracker is a web application that tracks music artists and provides deta
 - [Overview](#overview)
 - [Features](#features)
 - [Search Functionality](#search-functionality)
+- [Visualization Features](#visualization-features)
 - [Project Structure](#project-structure)
 - [Tech Stack](#tech-stack)
 - [Installation](#installation)
@@ -25,7 +27,7 @@ Groupie Tracker aims to provide a user-friendly platform for users to explore in
 - Search for artists, members, locations, and more
 - View specific artist details
 - See event locations and dates
-- Visualize artist relations
+- Visualize artist relations and concert geolocation
 
 The application provides seamless interaction through client-server communication and ensures error handling for a smooth user experience.
 
@@ -36,9 +38,12 @@ The application provides seamless interaction through client-server communicatio
   - Locations of their concerts
   - Dates of upcoming events
   - Relations with other artists
+  - **Concert Geolocation**: Geographical visualization of concert locations on an interactive map.
 - **Search Functionality**: A search bar to search by artist, member, location, or other attributes.
+- **Pagination**: Artist listing page with pagination, loading 20 artist cards per page.
+- **Media Responsiveness**: Optimized for various screen sizes, with mobile-friendly layouts and dynamic components.
 - **Error Handling**: Custom error pages for common HTTP errors like 404 and 500.
-- **Data Visualization**: Present artist data in a clear and structured format.
+- **Data Visualization**: Present artist data in a clear and structured format with enhanced visual features for user navigation.
 
 ## Search Functionality
 
@@ -58,6 +63,17 @@ The search bar enables users to quickly find artists, members, concert locations
 
 This search feature enhances the user experience by allowing quick access to detailed artist information.
 
+## Visualization Features
+
+The application provides rich visual elements to improve user interaction, including:
+
+- **Arrow Navigation**:
+  - **Arrow Up/Down**: Navigate vertically between artist cards or search results.
+  - **Arrow Left/Right**: Navigate horizontally between artist cards within the grid layout.
+- **Pagination**: Users can navigate through multiple pages of artists, with each page displaying 20 artist cards. Pagination controls include "Next" and "Previous" buttons and page indicators.
+- **Geolocation**: For artists with concert locations, an interactive map is displayed with pinpointed locations of upcoming concerts. Each location marker shows the venue name and other relevant details.
+- **Media Responsiveness**: The web app dynamically adjusts for different screen sizes (mobile, tablet, desktop) with optimized layouts. Navigation menus, search bars, and artist cards all adjust smoothly to fit various devices.
+
 ## Project Structure
 
 ```
@@ -68,10 +84,12 @@ This search feature enhances the user experience by allowing quick access to det
 │   ├── fetch/
 │   │   └── fetch.go          # Fetches data from the API
 │   ├── models/
-│       └── models.go         # Structs for Artists, Locations, Dates, and Relations
+│   |   └── models.go         # Structs for Artists, Locations, Dates, and Relations
+|   |__ utiliies
+|       |_geocode.go     
 ├── static/
 │   ├── css/                  # Stylesheets for the UI
-│   ├── js/                   # JavaScript files including search logic
+│   ├── js/                   # JavaScript files including search logic and pagination
 ├── templates/
 │   ├── index.html            # Home page template
 │   ├── artists.html          # Artists listing page
@@ -89,14 +107,16 @@ This search feature enhances the user experience by allowing quick access to det
 - **API Integration**: Fetches data about artists, locations, dates, and relations from a provided API.
 - **Text Templates**: Go's built-in HTML templating for rendering dynamic content.
 - **Search Bar**: JavaScript-driven search bar with typing suggestions and categories.
+- **Pagination**: Manage and load pages of artists dynamically with pagination controls.
+- **Geolocation**: Integration with Mapbox for concert location visualization.
 - **Error Handling**: Custom error pages (404, 500).
 
 ## Installation
 
 1. **Clone the repository**
    ```bash
-   git clone https://learn.zone01kisumu.ke/git/seodhiambo/groupie-tracker-search-bar.git
-   cd groupie-tracker-search-bar
+   git clone https://github.com/MauriceOmbewa/visualizations-groupie-trackers
+   cd groupie-tracker-visualization
    ```
 
 2. **Install Go Dependencies**
@@ -118,7 +138,7 @@ This search feature enhances the user experience by allowing quick access to det
 ### Endpoints
 
 - `/`: Home page that provides a general overview of the project.
-- `/artists`: Lists all the artists retrieved from the API.
+- `/artists`: Lists all the artists retrieved from the API with pagination (20 artists per page).
 - `/artist/{id}`: Detailed information about a specific artist, including concert locations, dates, and relations with other artists.
 - **Search Bar**: Use the search bar at the top of the site to quickly find artists, members, and more.
 
@@ -137,11 +157,9 @@ The project integrates with an external API that provides information about:
 - **Dates**: When the artists are performing.
 - **Relations**: Connections between different artists.
 
-Data is fetched and stored in the following structs:
-- `Artist`
-- `LocationsData`
-- `DatesData`
-- `RelationsData`
+### Geolocation Integration
+
+For artists' concert locations, the app integrates with Mapbox to provide an interactive map where users can see pinpointed concert locations. Each marker on the map displays the concert location and venue information, allowing users to visually explore where artists are performing.
 
 ### Fetch Data
 
@@ -155,20 +173,6 @@ The application implements custom error handling for common HTTP errors:
 - **500 Internal Server Error**: If there is a problem processing the request or rendering the templates.
 
 The custom error handler dynamically loads the appropriate error message and status code to provide better user feedback.
-
-```go
-func ErrorHandler(w http.ResponseWriter, statusCode int, message string) {
-    w.WriteHeader(statusCode)
-    errDetail := models.ErrorDetail{
-        Title:   http.StatusText(statusCode),
-        Message: message,
-    }
-    templates.ExecuteTemplate(w, "error.html", errDetail)
-}
-```
-
-### Example of Dynamic Error Handling:
-- `http://localhost:8080/artists/9999` will trigger a `404 Not Found` error if the artist ID doesn't exist.
 
 ## Contributing
 
