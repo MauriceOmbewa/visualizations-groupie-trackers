@@ -4,38 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/styles2.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" crossorigin="anonymous" />
     <title>Groupie Trackers - Artists</title>
 </head>
 <body>
     <header>
-            <div class="logo">
+        <div class="logo">
             <h1>G<span>r</span>o<span>u</span>p<span>i</span>e <span>T</span>r<span>a</span>c<span>k</span>e<span>r</span>s</h1>
-            </div>
+        </div>
 
-            <div class="hamburger" id="hamburger">
-                <i class="fa fa-bars"></i>
+        <div class="hamburger" id="hamburger">
+            <i class="fa fa-bars"></i>
+        </div>
+        <div class="header-navlinks">
+            <nav class="nav-menu" id="nav-menu">
+                <ul>
+                    <li><a href="/" class="menu-link">Home</a></li>
+                    <li><a href="/artists" class="menu-link">Artists</a></li>
+                </ul>
+            </nav>
+            <div class="search">
+                <input type="text" id="search-bar" placeholder="Search for artists, members, year..." oninput="searchArtists(this.value)">
+                <div id="search-results"></div>
             </div>
-            <div class="header-navlinks">
-                <nav class="nav-menu" id="nav-menu">
-                    <ul>
-                        <li><a href="/" class="menu-link">Home</a></li>
-                        <li><a href="/artists" class="menu-link">Artists</a></li>
-                    </ul>
-                    <!-- Add this to your index.html header or wherever appropriate -->
-                </nav>
-                <div class="search">
-                    <input type="text" id="search-bar" placeholder="Search for artists, members, year..." oninput="searchArtists(this.value)">
-                    <div id="search-results"></div>
-                </div>
-                </div>
+        </div>
     </header>
+    
     <main id="content">
         <h2>Artists</h2>
         <div id="artists-container">
-            {{range .}}
+            {{range .Artists}}
             <a href="/artist/{{.ID}}">
-                <!-- card 1 -->
                 <div class="card">
                     <img src="{{.Image}}" alt="{{.Name}}" class="card-img">
                     <div class="card-overlay">
@@ -43,6 +42,23 @@
                     </div>
                 </div>
             </a>
+            {{end}}
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="pagination">
+            {{if .HasPrevPage}}
+            <a href="/artists?page={{subtract .CurrentPage 1}}" class="pagination-button">Previous</a>
+            {{else}}
+            <span class="pagination-button disabled">Previous</span>
+            {{end}}
+
+            <span class="page-indicator">Page {{.CurrentPage}} of {{.TotalPages}}</span>
+
+            {{if .HasNextPage}}
+            <a href="/artists?page={{add .CurrentPage 1}}" class="pagination-button">Next</a>
+            {{else}}
+            <span class="pagination-button disabled">Next</span>
             {{end}}
         </div>
     </main>
