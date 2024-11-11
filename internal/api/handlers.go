@@ -19,8 +19,18 @@ var (
 	relationsData models.RelationsData
 )
 
+func Subtract(a, b int) int {
+	return a - b
+}
+
+func Add(a, b int) int {
+	return a + b
+}
+
 var templateFuncs = template.FuncMap{
-	"Join": strings.Join, // Register the Join function
+	"Join":     strings.Join, // Register the Join function
+	"subtract": Subtract,
+	"add":      Add,
 }
 
 var templates = template.Must(template.New("").Funcs(templateFuncs).ParseGlob("templates/*.html"))
@@ -53,15 +63,60 @@ func IndexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-// ArtistsHandler handles requests to the artists listing page
+// ArtistsHandler handles requests to the artists listing page with pagination
 func ArtistsHandler(w http.ResponseWriter, r *http.Request) {
-	// Check if the data was successfully loaded (e.g., network issues)
+	// Check if the data was successfully loaded
 	if len(artists) == 0 {
 		RenderError(w, http.StatusInternalServerError, "Failed to load artist data. Please check your internet connection.")
 		return
 	}
 
-	err := templates.ExecuteTemplate(w, "artists.html", artists)
+	// Get 'page' and 'limit' query parameters
+	pageStr := r.URL.Query().Get("page")
+	limitStr := r.URL.Query().Get("limit")
+
+	// Convert 'page' and 'limit' to integers, default to page=1 and limit=20
+	page, err := strconv.Atoi(pageStr)
+	if err != nil || page < 1 {
+		page = 1
+	}
+	limit, err := strconv.Atoi(limitStr)
+	if err != nil || limit < 1 {
+		limit = 20
+	}
+
+	// Calculate the start and end index for pagination
+	startIndex := (page - 1) * limit
+	endIndex := startIndex + limit
+
+	// Ensure the endIndex doesn't exceed the total number of artists
+	if endIndex > len(artists) {
+		endIndex = len(artists)
+	}
+
+	// Paginate the artists list
+	paginatedArtists := artists[startIndex:endIndex]
+
+	// Calculate total pages
+	totalPages := (len(artists) + limit - 1) / limit // Round up
+
+	// Pass paginated data and metadata to the template
+	data := struct {
+		Artists     []models.Artist
+		TotalPages  int
+		CurrentPage int
+		HasPrevPage bool
+		HasNextPage bool
+	}{
+		Artists:     paginatedArtists,
+		TotalPages:  totalPages,
+		CurrentPage: page,
+		HasPrevPage: page > 1,
+		HasNextPage: page < totalPages,
+	}
+
+	// Render the artists template with pagination
+	err = templates.ExecuteTemplate(w, "artists.html", data)
 	if err != nil {
 		RenderError(w, http.StatusInternalServerError, "Error loading the artists page")
 	}
