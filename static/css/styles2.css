@@ -213,6 +213,10 @@ section.hero {
     align-items: center;
 }
 
+.footer p:last-child {
+    padding-right: 3rem;
+}
+
 .socials a {
     display: block;
     margin: 10px 0;
@@ -238,13 +242,17 @@ section.hero {
 }
 
 .footer {
-    padding: 20px 7rem;
+    padding: 20px 0;
     background: #14213d;
     color: #adb5bd;
     text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.footer h1 {
+    margin-left: 3rem;
 }
 
 .footer a i {
@@ -599,8 +607,7 @@ section.relations {
 
 /* search-bar */
 #search-bar {
-    font-size: 18px;
-    /* size: 12px; */
+    font-size: 14px;
     padding: 12px;
     border: 1px solid #fca311;;
     border-radius: 25px;
@@ -616,7 +623,8 @@ section.relations {
 
 #search-results {
     position: absolute;
-    border: 1px solid #00b4d8;
+    /* border: 1px solid #00b4d8; */
+    border: none;
     max-height: 200px;
     overflow-y: auto;
     width: 223px;
@@ -624,7 +632,7 @@ section.relations {
     margin-left: 15px;
     border-radius: 6px;
     color: #fca311;
- 
+    background-color: #14213d;
 }
 
 .search-result-item {
@@ -679,14 +687,51 @@ section.map-container {
     text-align: center;
 }
 
+
+/* pagination */
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination-button {
+    display: inline-block;
+    padding: 7px 12px;
+    margin: 0 5px;
+    background-color: #00b4d8;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-size: 13px;
+}
+
+.pagination-button:hover {
+    background-color: #0288d1;
+}
+
+.pagination-button.disabled {
+    display: none;
+}
+
+
+span.page-indicator {
+    display: inline-block;
+    font-weight: bold;
+    color: #fca311;
+    font-size: 16px;
+}
+
+
 /* Responsive Design */
-@media (max-width: 1200px) {
+@media (min-width: 769px) and (max-width: 1200px) {
     .footer {
-        padding-inline: 4rem;
+        padding-inline: 2rem;
+
     }
 
     header {
-        height: 20px;
+        height: 50px;
     }
 
     header nav {
@@ -695,7 +740,7 @@ section.map-container {
 
     .hamburger {
         display: block;
-        /* margin-left: 2rem; */
+        margin-left: 2rem;
     }
 
     header .logo {
@@ -806,6 +851,7 @@ section.map-container {
 
     .hamburger {
         display: block;
+        margin-left: 0;
     }
 
     /* Hide the menu by default */
@@ -1179,6 +1225,7 @@ section.map-container {
    
     .hamburger {
         display: block;
+        margin-left: 0;
     }
 
     /* Hide the menu by default */
