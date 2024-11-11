@@ -230,19 +230,19 @@ document.addEventListener("DOMContentLoaded", function() {
         map.resize();
     }
 
-    // Toggle functionality for search bar and navigation links
-    const hamburger = document.querySelector(".hamburger");
-    const navLinks = document.querySelector(".nav-links");
-    const searchIcon = document.querySelector(".search-icon");
-    const search = document.querySelector(".search");
+    // // Toggle functionality for search bar and navigation links
+    // const hamburger = document.querySelector(".hamburger");
+    // const navLinks = document.querySelector(".nav-links");
+    // const searchIcon = document.querySelector(".search-icon");
+    // const search = document.querySelector(".search");
 
-    hamburger.addEventListener("click", () => {
-        navLinks.classList.toggle("active");
-    });
+    // hamburger.addEventListener("click", () => {
+    //     navLinks.classList.toggle("active");
+    // });
 
-    searchIcon.addEventListener("click", () => {
-        search.classList.toggle("active");
-    });
+    // searchIcon.addEventListener("click", () => {
+    //     search.classList.toggle("active");
+    // });
 
     // Functionality for slider and output value in artist ratings
     const slider = document.getElementById("rating-range");
